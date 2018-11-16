@@ -1,5 +1,5 @@
 Package: fgeo.install
-Title: What the Package Does (One Line, Title Case)
+Title: A Helper For Installing fgeo
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Mauro",
@@ -9,9 +9,10 @@ Authors@R:
       person(given = "CTFS-ForestGEO",
              role = "cph",
              email = "ForestGEO@si.edu"))
-Description: What the package does (one paragraph).
+Description: A helper for installing fgeo.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat
+RoxygenNote: 6.1.1
