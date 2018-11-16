@@ -15,11 +15,11 @@ knitr::opts_chunk$set(
 
 # fgeo.install
 
-Install __fgeo__ from source code.
+__fgeo.install__ helps you to install __fgeo__. It installs the missing dependencies from CRAN and __fgeo__ packages from source code.
 
-## Installation
+1. Ensure you have a recent version of R.
 
-1. Ensure you have a recent version of R and updated packages (see `?update.packages()`).
+2. Ensure you have updated packages (see `?update.packages()`).
 
 2. Install devtools.
 
@@ -33,12 +33,9 @@ install.packages("devtools")
 devtools::install_github("fgeo.install")
 ```
 
-## Example
-
-After you install __fgeo.install__, run this:
+4. Install missing dependencies and __fgeo__.
 
 ```
 fgeo.install::install_fgeo()
 ```
 
-Confirm that you want to install the missing packages.

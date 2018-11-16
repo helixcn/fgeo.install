@@ -3,14 +3,14 @@
 
 # fgeo.install
 
-Install **fgeo** from source code.
+**fgeo.install** helps you to install **fgeo**. It installs the missing
+dependencies from CRAN and **fgeo** packages from source code.
 
-## Installation
+1.  Ensure you have a recent version of R.
 
-1.  Ensure you have a recent version of R and updated packages (see
-    `?update.packages()`).
+2.  Ensure you have updated packages (see `?update.packages()`).
 
-2.  Install devtools.
+3.  Install devtools.
 
 <!-- end list -->
 
@@ -26,10 +26,8 @@ install.packages("devtools")
 devtools::install_github("fgeo.install")
 ```
 
-## Example
+4.  Install missing dependencies and **fgeo**.
 
-After you install **fgeo.install**, run this:
+<!-- end list -->
 
     fgeo.install::install_fgeo()
-
-Confirm that you want to install the missing packages.
