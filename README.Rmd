@@ -21,19 +21,19 @@ __fgeo.install__ helps you to install __fgeo__. It installs the missing dependen
 
 2. Ensure you have updated packages (see `?update.packages()`).
 
-2. Install devtools.
+3. Install devtools.
 
 ``` r
 install.packages("devtools")
 ```
 
-3. install __fgeo.install__.
+4. install __fgeo.install__.
 
 ```R
 devtools::install_github("fgeo.install")
 ```
 
-4. Install missing dependencies and __fgeo__.
+5. Install missing dependencies and __fgeo__.
 
 ```
 fgeo.install::install_fgeo()

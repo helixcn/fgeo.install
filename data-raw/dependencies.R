@@ -23,7 +23,9 @@ clean_raw <- function(raw, include_self, section) {
   names <- vapply(strsplit(parsed, " +"), "[[", 1, FUN.VALUE = character(1))
   if (section == "Suggests") {
     if (include_self) {
-      message("Ignoring argument `ignore_self` (it makes no sense for 'Suggests').")
+      message(
+        "Ignoring argument `ignore_self` (it makes no sense for 'Suggests')."
+      )
     }
     return(names)
   }
