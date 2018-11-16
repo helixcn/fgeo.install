@@ -23,7 +23,7 @@ install.packages("devtools")
 <!-- end list -->
 
 ``` r
-devtools::install_github("fgeo.install")
+devtools::install_github("forestgeo/fgeo.install")
 ```
 
 5.  Install missing dependencies and **fgeo**.

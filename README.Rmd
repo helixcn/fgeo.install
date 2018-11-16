@@ -30,7 +30,7 @@ install.packages("devtools")
 4. Install __fgeo.install__.
 
 ```R
-devtools::install_github("fgeo.install")
+devtools::install_github("forestgeo/fgeo.install")
 ```
 
 5. Install missing dependencies and __fgeo__.
