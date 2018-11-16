@@ -27,7 +27,7 @@ __fgeo.install__ helps you to install __fgeo__. It installs the missing dependen
 install.packages("devtools")
 ```
 
-4. install __fgeo.install__.
+4. Install __fgeo.install__.
 
 ```R
 devtools::install_github("fgeo.install")

@@ -18,7 +18,7 @@ dependencies from CRAN and **fgeo** packages from source code.
 install.packages("devtools")
 ```
 
-4.  install **fgeo.install**.
+4.  Install **fgeo.install**.
 
 <!-- end list -->
 
