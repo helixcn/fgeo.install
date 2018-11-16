@@ -10,8 +10,14 @@
 install_fgeo <- function() {
   please_install(needed(cran_dependencies))
 
+  ok_cran <- identical(needed(cran_dependencies), character(0))
+  if (ok_cran) message("* All dependencies are already installed.")
+
   fgeo <- src_pkg(src_paths())
   please_install(needed(fgeo), install_from_source)
+
+  ok_fgeo <- identical(needed(fgeo), character(0))
+  if (ok_fgeo) message("* The core fgeo packages are already installed.")
 
   invisible()
 }
