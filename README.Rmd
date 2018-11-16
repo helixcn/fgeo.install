@@ -1,0 +1,44 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# fgeo.install
+
+Install __fgeo__ from source code.
+
+## Installation
+
+1. Ensure you have a recent version of R and updated packages (see `?update.packages()`).
+
+2. Install devtools.
+
+``` r
+install.packages("devtools")
+```
+
+3. install __fgeo.install__.
+
+```R
+devtools::install_github("fgeo.install")
+```
+
+## Example
+
+After you install __fgeo.install__, run this:
+
+```
+fgeo.install::install_fgeo()
+```
+
+Confirm that you want to install the missing packages.
