@@ -1,10 +1,19 @@
-# A polite helper for installing packages ---------------------------------
-
+#' Install fgeo from source code.
+#'
+#' @return No return.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' install_fgeo()
+#' }
 install_fgeo <- function() {
   please_install(needed(cran_dependencies))
 
-  fgeo <- src_pkg(path_src())
+  fgeo <- src_pkg(src_paths())
   please_install(needed(fgeo), install_from_source)
+
+  invisible()
 }
 
 # Author: Hadley Wickham (via http://rstd.io/tidy-tools)
@@ -39,10 +48,8 @@ install_from_source <- function(pkgs) {
   install.packages(pkg_src(pkgs), repos = NULL, type = "source")
 }
 
-path_src <- function() {
-  # system.file("extdata", path, package = "fgeo.src")
-  # FIXME: Replace with the line above
-  path <- "inst/extdata/source"
+src_paths <- function() {
+  path <- system.file("extdata", "source", package = "fgeo.install")
   list.files(path, full.names = TRUE)
 }
 
@@ -53,29 +60,6 @@ src_pkg <- function(path) {
 
 # Convert package names to source paths
 pkg_src <- function(pkgs) {
-  unlist(lapply(pkgs, grep, path_src(), value = TRUE))
+  unlist(lapply(pkgs, grep, src_paths(), value = TRUE))
 }
 
-
-
-clean_raw <- function(raw, include_self, section) {
-  if (is.null(raw)) raw <- ""
-
-  pulled <- strsplit(raw, ",")[[1]]
-  parsed <- gsub("^\\s+|\\s+$", "", pulled)
-  names <- vapply(strsplit(parsed, " +"), "[[", 1, FUN.VALUE = character(1))
-  if (section == "Suggests") {
-    if (include_self) {
-      message("Ignoring argument `ignore_self` (it makes no sense for 'Suggests').")
-    }
-    return(names)
-  }
-  if (include_self) {
-    names <- c(names, "fgeo")
-  }
-  if (!is.null(matches)) {
-    names <- grep(matches, names, value = TRUE)
-  }
-
-  gsub("\n.*", "", names)
-}

@@ -1,9 +1,9 @@
-fgeo_dependencies <- function(matches = NULL,
-                              include_self = TRUE,
+fgeo_dependencies <- function(include_self = TRUE,
                               section = c("Imports", "Suggests")) {
+
   section <- section[[1]]
 
-  fgeo_pkgs <- src_pkg(path_src())
+  fgeo_pkgs <- fgeo.install:::src_pkg(fgeo.install:::src_paths())
   raws <- lapply(fgeo_pkgs, function(x) utils::packageDescription(x)[[section]])
 
   ok <- !vapply(raws, is.null, logical(1))
@@ -30,12 +30,11 @@ clean_raw <- function(raw, include_self, section) {
   if (include_self) {
     names <- c(names, "fgeo")
   }
-  if (!is.null(matches)) {
-    names <- grep(matches, names, value = TRUE)
-  }
 
   gsub("\n.*", "", names)
 }
+
+
 
 cran_dependencies <-
   grep("fgeo", fgeo_dependencies(), value = TRUE, invert = TRUE)
