@@ -23,7 +23,7 @@ install_fgeo <- function() {
 }
 
 # Author: Hadley Wickham (via http://rstd.io/tidy-tools)
-please_install <- function(pkgs, install_fun = install.packages) {
+please_install <- function(pkgs, install_fun = utils::install.packages) {
   if (length(pkgs) == 0) {
     return(invisible())
   }
@@ -35,7 +35,7 @@ please_install <- function(pkgs, install_fun = install.packages) {
     "Ok to install these packges?\n",
     paste("* ", pkgs, collapse = "\n")
   )
-  ok <- menu(c("Yes", "No"), title = title) == 1
+  ok <- utils::menu(c("Yes", "No"), title = title) == 1
 
   if (!ok) {
     return(invisible())
@@ -46,12 +46,12 @@ please_install <- function(pkgs, install_fun = install.packages) {
 
 # Adapted from Hadley Wickham (via http://rstd.io/tidy-tools)
 needed <- function(pkgs) {
-  have <- rownames(installed.packages())
+  have <- rownames(utils::installed.packages())
   setdiff(pkgs, have)
 }
 
 install_from_source <- function(pkgs) {
-  install.packages(pkg_src(pkgs), repos = NULL, type = "source")
+  utils::install.packages(pkg_src(pkgs), repos = NULL, type = "source")
 }
 
 src_paths <- function() {
