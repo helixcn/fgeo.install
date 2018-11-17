@@ -6,11 +6,25 @@
 **fgeo.install** helps you to install **fgeo**. It installs the missing
 dependencies from CRAN and **fgeo** packages from source code.
 
-1.  Ensure you have a recent version of R.
+<details>
 
-2.  Ensure you have updated packages (see `?update.packages()`).
+<summary><strong>Advice before you install</strong></summary>
 
-3.  Install devtools.
+<p>
+
+  - Ensure you have a recent version of R.
+
+  - Ensure you have updated packages (run `update.packages()`).
+
+  - Close all other R sessions.
+
+  - Restart R (go to *Session \> Restart R*).
+
+</p>
+
+</details>
+
+1.  Install devtools.
 
 <!-- end list -->
 
@@ -18,7 +32,7 @@ dependencies from CRAN and **fgeo** packages from source code.
 install.packages("devtools")
 ```
 
-4.  Install **fgeo.install**.
+2.  Install **fgeo.install**.
 
 <!-- end list -->
 
@@ -26,7 +40,7 @@ install.packages("devtools")
 devtools::install_github("forestgeo/fgeo.install")
 ```
 
-5.  Install missing dependencies and **fgeo**.
+3.  Run `install_fgeo()`
 
 <!-- end list -->
 
