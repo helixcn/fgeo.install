@@ -1,3 +1,19 @@
+# TODO:
+# * Allow building binary packages and create binary dir from .Platform$OS.type
+# * Create direcory in inst/extdata if it doesnt' exist
+# * Test taht all packages in inst/extdata pass R CMD cleanly. Use
+#   rcmdcheck::rcmdcheck().
+#     * expect_equall(x$errors, character(0))
+#     * expect_equall(x$warnings, character(0))
+#     * expect_equall(x$notes, character(0))
+# * Move R/ to fgeo and data-raw to R/ so this becomes a developer package to
+#   build source and binary code inside fgeo. That will allow to test code that
+#   is not in data-raw
+
+# rename_filenames_by_installation_order() should take an ordered vector of
+# package names: c("fgeo.x", "fgeo.base", ...) and do the rest of the magic
+# inside the function.
+
 update_dependencies <- function() source("data-raw/dependencies.R")
 
 update_build <- function() {
