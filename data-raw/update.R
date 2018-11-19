@@ -1,4 +1,13 @@
 # TODO:
+# * Read remotes
+# * Avoid installing via Import because may fail
+#   (https://github.com/tidyverse/tidyverse/issues/70). Safest to keep installing
+#   directly from CRAN with install.packages() or remotes::some-function.
+# * Tests may use test_lib library with .libPaths(test_lib) (e.g.
+#   https://github.com/tidyverse/tidyverse/issues/70#issue-250011959
+#   Hadly: https://github.com/tidyverse/tidyverse/issues/70#issuecomment-342554422
+#   )
+#   At the end, simply fs::dir_delete(test_lib)
 # * Allow building binary packages and create binary dir from .Platform$OS.type
 # * Create direcory in inst/extdata if it doesnt' exist
 # * Test taht all packages in inst/extdata pass R CMD cleanly. Use
