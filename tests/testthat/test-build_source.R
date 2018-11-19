@@ -20,12 +20,12 @@ test_that("builds source of mulitple packages into a single directory", {
     git2r::commit(".", "Commit all.")
     setwd(tmp)
 
-    x <- purrr::quietly(build_source)(pkgs, fs::path(tmp, "source"))
+    master <- purrr::quietly(build_source)(pkgs, fs::path(tmp, "source"))
 
     found <- fs::dir_ls("source", regexp = "[.tar.gz]")
     expect_equal(length(found), 2)
 
-    informs_branch <- all(grepl("master", x$messages))
-    expect_true(informs_branch)
+    branch_is_master <- all(grepl("master", master$messages))
+    expect_true(branch_is_master)
   })
 })
