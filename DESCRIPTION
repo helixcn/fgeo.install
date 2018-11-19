@@ -18,6 +18,6 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Remotes: local::/inst/extdata/source/01-fgeo.x_0.0.0.9000.tar.gz
+Remotes: local::/extdata/source/01-fgeo.x_0.0.0.9000.tar.gz
 Imports: 
     fgeo.x
