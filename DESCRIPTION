@@ -18,6 +18,4 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Remotes: local::/C:/Users/LeporeM/Documents/R/R-3.5.1/library/fgeo.install/extdata/source
-Imports: 
-    fgeo.x
+
