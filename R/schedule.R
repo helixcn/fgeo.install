@@ -6,22 +6,47 @@ plan <- c(
   "05" = "fgeo.map"
 )
 
-#' Schedule fgeo packages in the order they should be installed.
+#' Prefix and separate matching patterns.
 #'
-#' @param pkgs
+#' Takes effect only on elements that match the patterns.
 #'
-#' @return
+#' @param x A character vector.
+#' @param prefix A character vector with the format
+#'   `c("prefix1" = "pattern1", "prefix2" = "pattern2")`.
+#' @param sep Separator to surround the pattern with.
+#'
+#' @return A character vector.
 #' @export
 #'
 #' @examples
-#' src <- fs::dir_ls("inst/extdata/source")
-#' schedule(src, plan)
+#' x <- letters[1:3]
+#' prefix <- c(
+#'  "01" = "c",
+#'  "01" = "b",
+#'  "02" = "a"
+#' )
 #'
+#' prefix(x, prefix)
+#' prefix(x, prefix, sep = "")
+#'
+#' # Useful to reorder
+#' sort(x)
+#' x2 <- prefix(x, prefix, sep = "")
+#' sort(x2)
+#'
+#' # Useful to plan the order in which these packages should be installed
 #' pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
-#' schedule(pkgs, plan)
-schedule <- function(pkgs, plan) {
-  .plan <- rlang::set_names(glue("{names(plan)}_{plan}_"), plan)
+#' plan <- c(
+#'   "01" = "fgeo.x",
+#'   "02" = "fgeo.base",
+#'   "03" = "fgeo.ctfs",
+#'   "04" = "fgeo.tool",
+#'   "05" = "fgeo.map"
+#' )
+#' prefix(pkgs, plan)
+prefix <- function(x, .prefix, sep = "_") {
+  .prefix <- rlang::set_names(glue("{names(.prefix)}{sep}{.prefix}{sep}"), .prefix)
 
-  sort(stringr::str_replace_all(pkgs, .plan))
+  sort(stringr::str_replace_all(x, .prefix))
 }
 

@@ -3,7 +3,7 @@
 export(build_github)
 export(download_github_zip)
 export(install_fgeo)
-export(schedule)
+export(prefix)
 export(update_fgeo_source)
 importFrom(fs,dir_create)
 importFrom(fs,dir_delete)
