@@ -31,23 +31,3 @@ test_that("downloads .zip files from owner/repos to destination", {
   fs::dir_delete(zip)
 })
 
-
-
-context("build_local")
-
-test_that("builds source of mulitple packages into a single directory", {
-  pkgs <- c("toy1", "toy2")
-  pkgs_path <- map_chr(pkgs, test_path)
-  src_path <- test_path("source")
-
-  build_local(pkgs_path, src_path)
-
-  found <- dir_ls(src_path, regexp = "[.tar.gz]")
-  expect_equal(length(found), 2)
-
-  expected <-  glue_collapse(glue("{pkgs}_0.0.0.9000.tar.gz"), "|")
-  output_is_expected <- all(map_lgl(found, ~grepl(expected, .x)))
-  expect_true(output_is_expected)
-
-  fs::dir_delete(src_path)
-})

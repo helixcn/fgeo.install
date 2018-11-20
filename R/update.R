@@ -12,3 +12,9 @@ rename_filenames_by_installation_order <- function() {
   new_path <- stringr::str_replace_all(path, pattern_replacement)
   fs::file_move(path, new_path)
 }
+
+update_fgeo_source <- function() {
+  pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
+  urls <- glue("forestgeo/{pkgs}")
+  build_github(urls, "inst/extdata/source")
+}
