@@ -8,40 +8,41 @@
 #' install_fgeo()
 #' }
 install_fgeo <- function() {
-  please_install(needed(cran_dependencies))
-
-  ok_cran <- identical(needed(cran_dependencies), character(0))
-  if (ok_cran) message("* All dependencies are already installed.")
+  from_cran <- install(needed(cran_dependencies))
 
   fgeo <- src_pkg(src_paths())
-  please_install(needed(fgeo), install_from_source)
+  schedule <- prefix(needed(fgeo), plan)
+  from_src <- install(schedule, install_from_source)
+
+  ok_cran <- identical(needed(cran_dependencies), character(0))
+  if (ok_cran) {
+    inform("All CRAN dependencies are already installed.")
+  } else {
+    from_cran <- paste0("* ", from_cran, collapse = "\n")
+    inform(glue("Packages installed from CRAN:\n{from_cran}"))
+  }
 
   ok_fgeo <- identical(needed(fgeo), character(0))
-  if (ok_fgeo) message("* The core fgeo packages are already installed.")
+  if (ok_fgeo) {
+    inform("All fgeo packages are already installed.")
+  } else {
+    pkg_nms <- fs::path_ext_remove(fs::path_ext_remove(fs::path_file(from_src)))
+    pkg_nms <- paste0('* ', pkg_nms, collapse = '\n')
+    inform(glue("Packages installed from source:\n{pkg_nms}"))
+  }
 
   invisible()
 }
 
 # Author: Hadley Wickham (via http://rstd.io/tidy-tools)
-please_install <- function(pkgs, install_fun = utils::install.packages) {
+install <- function(pkgs, install_fun = utils::install.packages) {
   if (length(pkgs) == 0) {
-    return(invisible())
-  }
-  if (!interactive()) {
-    stop("Please run in interactive session", call. = FALSE)
-  }
-
-  title <- paste0(
-    "Ok to install these packges?\n",
-    paste("* ", pkgs, collapse = "\n")
-  )
-  ok <- utils::menu(c("Yes", "No"), title = title) == 1
-
-  if (!ok) {
     return(invisible())
   }
 
   install_fun(pkgs)
+
+  invisible(pkgs)
 }
 
 # Adapted from Hadley Wickham (via http://rstd.io/tidy-tools)
