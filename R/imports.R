@@ -1,2 +1,2 @@
-#' @importFrom glue glue
+#' @importFrom glue glue glue_collapse
 NULL

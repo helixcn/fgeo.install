@@ -2,6 +2,7 @@
 #'
 #' @param pkgs Character vector: Paths to each package to build.
 #' @param src Length-1 string: Path to a directory to save the output.
+#' @param ... Arguments to [devtools::build()].
 #'
 #' @return First argument, invisible.
 #' @export
@@ -9,41 +10,18 @@
 #' @examples
 #' \dontrun{
 #' build_source(fgeo_pkgs(), fgeo_src())
-#'
-#' withr::with_dir(
-#'  "../fgeo",
-#'   build_source(fgeo_pkgs(), fgeo_src())
-#' )
 #' }
-build_source <- function(pkgs, src, branch = "master") {
+build_source <- function(pkgs, src, ...) {
   force(pkgs)
   force(src)
 
   if (!fs::dir_exists(src)) fs::dir_create(src)
 
-  purrr::walk2(
-    pkgs, src,
-    ~build_branch(.x, .y, branch)
-  )
+  purrr::walk2(pkgs, src, devtools::build, ...)
 
   invisible(pkgs)
 }
 
-build_branch <- function(pkg, src, branch) {
-  withr::with_dir(
-    pkg, {
-      head <- git2r::repository_head()$name
-      git2r::checkout(".", branch)
-      devtools::build(".", src)
-      git2r::checkout(".", head)
-
-      message(glue("
-        Built ({branch}): {pkg}
-        In: {src}
-      "))
-    }
-  )
-}
 
 
 # Helpers -----------------------------------------------------------------

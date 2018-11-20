@@ -1,31 +1,18 @@
 context("build_source")
 
 test_that("builds source of mulitple packages into a single directory", {
-  withr::with_dir(getwd(), {
-    tmp <- tempdir()
-    pkgs <- c("./toy1", "./toy2")
-
-    setwd(tmp)
+  tmp <- tempdir()
+  withr::with_dir(tmp, {
+    pkgs <- c("toy1", "toy2")
     usethis::create_package(pkgs[[1]], rstudio = FALSE, open = FALSE)
-    setwd(pkgs[[1]])
-    git2r::init()
-    git2r::add(".", dir())
-    git2r::commit(".", "Commit all.")
-    setwd(tmp)
-
     usethis::create_package(pkgs[[2]], rstudio = FALSE, open = FALSE)
-    setwd(pkgs[[2]])
-    git2r::init()
-    git2r::add(".", dir())
-    git2r::commit(".", "Commit all.")
-    setwd(tmp)
-
-    master <- purrr::quietly(build_source)(pkgs, fs::path(tmp, "source"))
+    build_source(pkgs, "source")
 
     found <- fs::dir_ls("source", regexp = "[.tar.gz]")
     expect_equal(length(found), 2)
 
-    branch_is_master <- all(grepl("master", master$messages))
-    expect_true(branch_is_master)
+    expected <-  glue::glue_collapse(glue("{pkgs}_0.0.0.9000.tar.gz"), "|")
+    output_is_expected <- all(purrr::map_lgl(found, ~grepl(expected, .x)))
+    expect_true(output_is_expected)
   })
 })

@@ -4,12 +4,14 @@
 \alias{build_source}
 \title{Build source packages (vectorized over `pkgs`).}
 \usage{
-build_source(pkgs, src, branch = "master")
+build_source(pkgs, src, ...)
 }
 \arguments{
 \item{pkgs}{Character vector: Paths to each package to build.}
 
 \item{src}{Length-1 string: Path to a directory to save the output.}
+
+\item{...}{Arguments to [devtools::build()].}
 }
 \value{
 First argument, invisible.
@@ -19,11 +21,6 @@ Build source packages (vectorized over `pkgs`).
 }
 \examples{
 \dontrun{
-build_source(fgeo_pkgs("../"), fgeo_src("../"))
-
-withr::with_dir(
- "../fgeo",
-  build_source(fgeo_pkgs(), fgeo_src())
-)
+build_source(fgeo_pkgs(), fgeo_src())
 }
 }

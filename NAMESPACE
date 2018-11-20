@@ -3,3 +3,4 @@
 export(build_source)
 export(install_fgeo)
 importFrom(glue,glue)
+importFrom(glue,glue_collapse)
