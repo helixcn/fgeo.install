@@ -15,9 +15,9 @@ build_local <- function(pkgs, src, ...) {
   force(pkgs)
   force(src)
 
-  if (!fs::dir_exists(src)) fs::dir_create(src)
+  if (!dir_exists(src)) dir_create(src)
 
-  purrr::walk2(pkgs, src, devtools::build, ...)
+  walk2(pkgs, src, devtools::build, ...)
 
   invisible(pkgs)
 }

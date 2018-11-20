@@ -5,7 +5,7 @@
 \alias{download_github_zip}
 \title{Build source package from source code in a GitHub repository.}
 \usage{
-build_github(urls, path = NULL, ...)
+build_github(urls, destdir = ".", ...)
 
 download_github_zip(urls, src)
 }
@@ -13,10 +13,10 @@ download_github_zip(urls, src)
 \item{urls}{Character vector giving GitHub repositories with the
 format "owner/repo".}
 
+\item{...}{Arguments passed to [devtools::build()].}
+
 \item{path}{Length-1 character vector; path to directory where to save the
 output.}
-
-\item{...}{Arguments passed to [devtools::build()].}
 }
 \value{
 * `download_github_zip()` outputs .zip files.
@@ -29,10 +29,11 @@ Build source package from source code in a GitHub repository.
 \dontrun{
 urls <- c("maurolepore/toy1", "maurolepore/toy2")
 tmp <- tempdir()
+
 download_github_zip(urls, tmp)
-fs::dir_ls(tmp, glob = "*.zip")
+dir_ls(tmp, glob = "*.zip")
 
 build_github(urls, tmp)
-fs::dir_ls(tmp, glob = "*.tar.gz")
+dir_ls(tmp, glob = "*.tar.gz")
 }
 }

@@ -17,29 +17,28 @@
 #' tmp <- tempdir()
 #'
 #' download_github_zip(urls, tmp)
-#' fs::dir_ls(tmp, glob = "*.zip")
+#' dir_ls(tmp, glob = "*.zip")
 #'
 #' build_github(urls, tmp)
-#' fs::dir_ls(tmp, glob = "*.tar.gz")
-#'
+#' dir_ls(tmp, glob = "*.tar.gz")
 #' }
-build_github <- function(urls, path = NULL, ...) {
+build_github <- function(urls, destdir = ".", ...) {
+  if (!dir_exists(destdir)) abort("`destdir` must exist.")
+
   # From GitHub to .zip
   tmp <- tempfile()
   zip_dir <- glue("{tmp}/zip")
-  fs::dir_create(zip_dir)
+  dir_create(zip_dir)
   download_github_zip(urls, zip_dir)
 
   # Unzip
   src_dir <- glue("{tmp}/src")
-  zip_files <- fs::dir_ls(zip_dir)
-  purrr::walk(zip_files, utils::unzip, exdir = src_dir)
+  zip_files <- dir_ls(zip_dir)
+  walk(zip_files, utils::unzip, exdir = src_dir)
 
   # From source code to source package
-  purrr::walk2(
-    fs::dir_ls(src_dir), path %||% ".",
-    devtools::build
-  )
+  .path <- glue("{destdir}/{dir(src_dir)}.tar.gz")
+  walk2(dir_ls(src_dir), .path, pkgbuild::build, ...)
 }
 
 #' @export
@@ -47,11 +46,11 @@ build_github <- function(urls, path = NULL, ...) {
 download_github_zip <- function(urls, src) {
   .urls <- glue("https://github.com/{urls}/archive/master.zip")
 
-  if (!fs::dir_exists(src)) fs::dir_create(src)
+  if (!dir_exists(src)) dir_create(src)
   .urls <- glue("https://github.com/{urls}/archive/master.zip")
 
   repos <- gsub(".*/(.*)$", "\\1", urls)
   .src <- glue("{src}/{repos}.zip")
-  purrr::walk2(.urls, .src, utils::download.file)
+  walk2(.urls, .src, utils::download.file)
 }
 

@@ -1,3 +1,4 @@
+^\.buildignore$
 ^fgeo\.install\.Rproj$
 ^README\.Rmd$
 ^data-raw$
