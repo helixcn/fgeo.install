@@ -9,9 +9,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' build_source(fgeo_pkgs(), fgeo_src())
+#' build_local(fgeo_pkgs(), fgeo_src())
 #' }
-build_source <- function(pkgs, src, ...) {
+build_local <- function(pkgs, src, ...) {
   force(pkgs)
   force(src)
 
