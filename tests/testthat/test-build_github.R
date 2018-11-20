@@ -3,12 +3,12 @@ context("build_github")
 urls <- c("maurolepore/toy1", "maurolepore/toy2")
 
 test_that("builds source of mulitple packages into a single directory", {
-  src <- test_path("source")
-  dir_create(src)
+  destdir <- test_path("source")
+  dir_create(destdir)
 
-  expect_error(build_github(urls, src), NA)
+  expect_error(build_github(urls, destdir), NA)
 
-  fs::dir_delete(src)
+  fs::dir_delete(destdir)
 })
 
 test_that("errs with informative message", {

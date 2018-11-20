@@ -7,16 +7,16 @@
 \usage{
 build_github(urls, destdir = ".", ...)
 
-download_github_zip(urls, src)
+download_github_zip(urls, destdir)
 }
 \arguments{
 \item{urls}{Character vector giving GitHub repositories with the
 format "owner/repo".}
 
-\item{...}{Arguments passed to [devtools::build()].}
-
-\item{path}{Length-1 character vector; path to directory where to save the
+\item{destdir}{Length-1 character vector; path to directory where to save the
 output.}
+
+\item{...}{Arguments passed to [devtools::build()].}
 }
 \value{
 * `download_github_zip()` outputs .zip files.

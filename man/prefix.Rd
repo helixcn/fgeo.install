@@ -9,10 +9,10 @@ prefix(x, .prefix, sep = "_")
 \arguments{
 \item{x}{A character vector.}
 
-\item{sep}{Separator to surround the pattern with.}
-
-\item{prefix}{A character vector with the format
+\item{.prefix}{A character vector with the format
 `c("prefix1" = "pattern1", "prefix2" = "pattern2")`.}
+
+\item{sep}{Separator to surround the pattern with.}
 }
 \value{
 A character vector.

@@ -11,7 +11,7 @@ plan <- c(
 #' Takes effect only on elements that match the patterns.
 #'
 #' @param x A character vector.
-#' @param prefix A character vector with the format
+#' @param .prefix A character vector with the format
 #'   `c("prefix1" = "pattern1", "prefix2" = "pattern2")`.
 #' @param sep Separator to surround the pattern with.
 #'

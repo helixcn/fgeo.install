@@ -2,7 +2,7 @@
 #'
 #' @param urls Character vector giving GitHub repositories with the
 #'   format "owner/repo".
-#' @param path Length-1 character vector; path to directory where to save the
+#' @param destdir Length-1 character vector; path to directory where to save the
 #'   output.
 #' @param ... Arguments passed to [devtools::build()].
 #'
@@ -43,14 +43,14 @@ build_github <- function(urls, destdir = ".", ...) {
 
 #' @export
 #' @rdname build_github
-download_github_zip <- function(urls, src) {
+download_github_zip <- function(urls, destdir) {
   .urls <- glue("https://github.com/{urls}/archive/master.zip")
 
-  if (!dir_exists(src)) dir_create(src)
+  if (!dir_exists(destdir)) dir_create(destdir)
   .urls <- glue("https://github.com/{urls}/archive/master.zip")
 
   repos <- gsub(".*/(.*)$", "\\1", urls)
-  .src <- glue("{src}/{repos}.zip")
+  .src <- glue("{destdir}/{repos}.zip")
   walk2(.urls, .src, utils::download.file)
 }
 

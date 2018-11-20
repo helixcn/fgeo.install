@@ -23,4 +23,10 @@ Imports:
     fs,
     usethis,
     glue,
-    rlang
+    rlang,
+    purrr,
+    fgeo (>= 0.0.0.9002),
+    stringr,
+    pkgbuild
+Remotes:  
+    forestgeo/fgeo

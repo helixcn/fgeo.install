@@ -3,6 +3,9 @@
 
 # fgeo.install
 
+[![Travis build
+status](https://travis-ci.org/forestgeo/fgeo.install.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.install)
+
 **fgeo.install** helps you to install **fgeo**. It installs the missing
 dependencies from CRAN and **fgeo** packages from source code.
 
