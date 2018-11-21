@@ -1,3 +1,4 @@
+# FIXME: Brakes the packages
 plan <- c(
   "01" = "fgeo.x",
   "02" = "fgeo.base",

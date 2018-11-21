@@ -22,23 +22,29 @@
 #' build_github(urls, tmp)
 #' dir_ls(tmp, glob = "*.tar.gz")
 #' }
-build_github <- function(urls, destdir = ".", ...) {
+build_github <- function(urls, destdir = ".") {
   if (!dir_exists(destdir)) abort("`destdir` must exist.")
 
   # From GitHub to .zip
   tmp <- tempfile()
+  on.exit(dir_delete(tmp))
+
   zip_dir <- glue("{tmp}/zip")
   dir_create(zip_dir)
   download_github_zip(urls, zip_dir)
 
   # Unzip
-  src_dir <- glue("{tmp}/src")
+  src_unzip_dir <- glue("{tmp}/src/unzip")
   zip_files <- dir_ls(zip_dir)
-  walk(zip_files, utils::unzip, exdir = src_dir)
+  walk(zip_files, utils::unzip, exdir = src_unzip_dir)
 
   # From source code to source package
-  .path <- glue("{destdir}/{dir(src_dir)}.tar.gz")
-  walk2(dir_ls(src_dir), .path, pkgbuild::build, ...)
+  walk(dir_ls(src_unzip_dir), pkgbuild::build)
+
+  built_paths <- dir_ls(src_unzip_dir, glob = "*.tar.gz")
+  destdir_paths <- fs::path(destdir, fs::path_file(built_paths))
+  fs::file_move(built_paths, destdir_paths)
+
 }
 
 #' @export

@@ -4,7 +4,7 @@
 \alias{update_fgeo_source}
 \title{Build fgeo source-packages from github into a local directory.}
 \usage{
-update_fgeo_source()
+update_fgeo_source(src = "inst/extdata/source")
 }
 \value{
 Source packages (.tar.gz files).
@@ -14,6 +14,6 @@ Build fgeo source-packages from github into a local directory.
 }
 \examples{
 \dontrun{
-update_fgeo_source()
+update_fgeo_source("../fgeo/inst/extdata/source")
 }
 }

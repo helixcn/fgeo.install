@@ -5,17 +5,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' update_fgeo_source()
+#' update_fgeo_source("../fgeo/inst/extdata/source")
 #' }
-update_fgeo_source <- function() {
+update_fgeo_source <- function(src = "inst/extdata/source") {
   pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
   urls <- glue("forestgeo/{pkgs}")
 
-  src <- "inst/extdata/source"
   if (dir_exists(src)) dir_delete(src)
 
   dir_create(src)
   build_github(urls, src)
-
-  fs::file_move(dir_ls(src), prefix(dir_ls(src), plan))
 }

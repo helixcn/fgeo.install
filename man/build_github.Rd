@@ -5,7 +5,7 @@
 \alias{download_github_zip}
 \title{Build source package from source code in a GitHub repository.}
 \usage{
-build_github(urls, destdir = ".", ...)
+build_github(urls, destdir = ".")
 
 download_github_zip(urls, destdir)
 }
