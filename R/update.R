@@ -10,5 +10,12 @@
 update_fgeo_source <- function() {
   pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
   urls <- glue("forestgeo/{pkgs}")
-  build_github(urls, "inst/extdata/source")
+
+  src <- "inst/extdata/source"
+  if (dir_exists(src)) dir_delete(src)
+
+  dir_create(src)
+  build_github(urls, src)
+
+  fs::file_move(dir_ls(src), prefix(dir_ls(src), plan))
 }

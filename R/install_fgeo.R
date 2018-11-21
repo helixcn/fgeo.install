@@ -11,8 +11,7 @@ install_fgeo <- function() {
   from_cran <- install(needed(cran_dependencies))
 
   fgeo <- src_pkg(src_paths())
-  schedule <- prefix(needed(fgeo), plan)
-  from_src <- install(schedule, install_from_source)
+  from_src <- install(needed(fgeo), install_from_source)
 
   ok_cran <- identical(needed(cran_dependencies), character(0))
   if (ok_cran) {
