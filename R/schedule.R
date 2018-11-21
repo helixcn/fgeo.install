@@ -1,4 +1,3 @@
-# FIXME: Brakes the packages
 plan <- c(
   "01" = "fgeo.x",
   "02" = "fgeo.base",
@@ -6,6 +5,41 @@ plan <- c(
   "04" = "fgeo.tool",
   "05" = "fgeo.map"
 )
+
+#' Sort packages in the order they should be installed.
+#'
+#' @param pkgs Character vector: Normally the paths to source-packages to be
+#'   installed.
+#' @param plan Character vector. See examples.
+#'
+#' @return Character vector ordered as packages should be installed.
+#' @export
+#'
+#' @examples
+#' plan <- c(
+#'   "01" = "fgeo.x",
+#'   "02" = "fgeo.base",
+#'   "03" = "fgeo.ctfs",
+#'   "04" = "fgeo.tool",
+#'   "05" = "fgeo.map"
+#' )
+#'
+#' pkgs <- dir_ls("inst/extdata/source")
+#' schedule(pkgs)
+#'
+#' # WARNING: Bad order -- for demonstration
+#' # The rescheduling affects only the planed pakcages. Then alpha ordered.
+#' plan <- c(
+#'   "01" = "fgeo.map",
+#'   "02" = "fgeo.x"
+#' )
+#'
+#' pkgs <- dir_ls("inst/extdata/source")
+#' schedule(pkgs)
+schedule <- function(pkgs, plan) {
+  x <- rlang::set_names(pkgs, prefix(pkgs, plan))
+  unname(x[sort(names(x))])
+}
 
 #' Prefix and separate matching patterns.
 #'
@@ -46,8 +80,9 @@ plan <- c(
 #' )
 #' prefix(pkgs, plan)
 prefix <- function(x, .prefix, sep = "_") {
-  .prefix <- rlang::set_names(glue("{names(.prefix)}{sep}{.prefix}{sep}"), .prefix)
+  .prefix <-
+    rlang::set_names(glue("{names(.prefix)}{sep}{.prefix}{sep}"), .prefix)
 
-  sort(stringr::str_replace_all(x, .prefix))
+  stringr::str_replace_all(x, .prefix)
 }
 

@@ -11,7 +11,7 @@ check_built_packages(src_pkgs)
 check.}
 }
 \value{
-A [tibble][tibble-package].
+A \link[=tibble-package]{tibble}.
 }
 \description{
 Check multiple built source-packages.

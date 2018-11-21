@@ -32,3 +32,4 @@ Imports:
     tidyr
 Remotes: 
     forestgeo/fgeo
+Roxygen: list(markdown = TRUE)

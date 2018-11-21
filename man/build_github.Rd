@@ -16,11 +16,13 @@ format "owner/repo".}
 \item{destdir}{Length-1 character vector; path to directory where to save the
 output.}
 
-\item{...}{Arguments passed to [devtools::build()].}
+\item{...}{Arguments passed to \code{\link[devtools:build]{devtools::build()}}.}
 }
 \value{
-* `download_github_zip()` outputs .zip files.
-  * `build_github()` outputs source-package files (.tar.gz).
+\itemize{
+\item \code{download_github_zip()} outputs .zip files.
+\item \code{build_github()} outputs source-package files (.tar.gz).
+}
 }
 \description{
 Build source package from source code in a GitHub repository.
