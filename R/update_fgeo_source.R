@@ -7,8 +7,8 @@
 #' \dontrun{
 #' update_fgeo_source("../fgeo/inst/extdata/source")
 #' }
-update_fgeo_source <- function(src = "inst/extdata/source") {
-  pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
+update_fgeo_source <- function(pkgs = fgeo::fgeo_dependencies("fgeo", FALSE),
+                               src = "inst/extdata/source") {
   urls <- glue("forestgeo/{pkgs}")
 
   if (dir_exists(src)) dir_delete(src)
