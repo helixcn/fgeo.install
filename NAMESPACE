@@ -2,6 +2,8 @@
 
 export(build_github)
 export(check_built_packages)
+export(dependencies)
+export(dependencies_ls)
 export(download_github_zip)
 export(install_fgeo)
 export(prefix)
