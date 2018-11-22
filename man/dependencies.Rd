@@ -10,7 +10,7 @@ dependencies(pkgs, exclude = NULL, section = "Imports")
 dependencies_ls(pkgs, section = "Imports")
 }
 \arguments{
-\item{pkgs}{Character vector: The name of installed packges.}
+\item{pkgs}{Character vector: The name of installed packages.}
 
 \item{exclude}{String. Pattern to exclude from output.}
 

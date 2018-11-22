@@ -1,5 +1,8 @@
 #' Build fgeo source-packages from github into a local directory.
 #'
+#' @param pkgs Character vector: The name of packages to update.
+#' @param src Character vector: Path to directory where to save output.
+#'
 #' @return Source packages (.tar.gz files).
 #' @export
 #'

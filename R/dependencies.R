@@ -1,6 +1,6 @@
 #' Find all dependencies_ls of some packages.
 #'
-#' @param pkgs Character vector: The name of installed packges.
+#' @param pkgs Character vector: The name of installed packages.
 #' @param exclude String. Pattern to exclude from output.
 #' @param section Length-1 character vector: Section of DESCRITION to include.
 #'

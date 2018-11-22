@@ -1,3 +1,6 @@
+pkgs <- fgeo::fgeo_dependencies("fgeo", FALSE)
+cran_dependencies <- dependencies(pkgs, exclude = "fgeo", section = "Imports")
+
 #' Install fgeo from source code.
 #'
 #' @return No return.

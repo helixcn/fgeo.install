@@ -29,7 +29,8 @@ Imports:
     stringr,
     pkgbuild,
     tibble,
-    tidyr
+    tidyr,
+    magrittr
 Remotes: 
     forestgeo/fgeo
 Roxygen: list(markdown = TRUE)

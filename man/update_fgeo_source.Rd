@@ -7,6 +7,11 @@
 update_fgeo_source(pkgs = fgeo::fgeo_dependencies("fgeo", FALSE),
   src = "inst/extdata/source")
 }
+\arguments{
+\item{pkgs}{Character vector: The name of packages to update.}
+
+\item{src}{Character vector: Path to directory where to save output.}
+}
 \value{
 Source packages (.tar.gz files).
 }
