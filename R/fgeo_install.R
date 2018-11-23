@@ -8,9 +8,9 @@ cran_dependencies <- dependencies(pkgs, exclude = "fgeo", section = "Imports")
 #'
 #' @examples
 #' \dontrun{
-#' install_fgeo()
+#' fgeo_install()
 #' }
-install_fgeo <- function() {
+fgeo_install <- function() {
   from_cran <- install(needed(cran_dependencies))
 
   fgeo <- src_pkg(src_paths())
@@ -47,12 +47,6 @@ install <- function(pkgs, install_fun = utils::install.packages) {
   invisible(pkgs)
 }
 
-# Adapted from Hadley Wickham (via http://rstd.io/tidy-tools)
-needed <- function(pkgs) {
-  have <- rownames(utils::installed.packages())
-  setdiff(pkgs, have)
-}
-
 install_from_source <- function(pkgs) {
   # TODO: Use remotes::install_local()?
   utils::install.packages(pkg_src(pkgs), repos = NULL, type = "source")
@@ -71,5 +65,36 @@ src_pkg <- function(path) {
 # Convert package names to source paths
 pkg_src <- function(pkgs) {
   unlist(lapply(pkgs, grep, src_paths(), value = TRUE))
+}
+
+
+
+
+# Tested ------------------------------------------------------------------
+
+# @param pkgs Package name (CRAN) or path (source).
+install_these <- function(pkgs, lib = NULL, .f = utils::install.packages, ...) {
+  have_pkgs <- identical(needed(pkgs), character(0))
+  if (have_pkgs) {
+    message("Required packages are already installed.")
+    return(invisible(pkgs))
+  }
+
+  # As documented in install.packages()
+  lib <- if (is.null(lib)) .libPaths()[[1]]
+  .f(pkgs, lib = lib, ...)
+
+  invisible(pkgs)
+}
+
+# Helpers -----------------------------------------------------------------
+
+installed <- function() {
+  unname(rownames(installed.packages()))
+}
+
+# @param pkgs Package names (CRAN) or paths to their source.
+needed <- function(pkgs) {
+  setdiff(fs::path_file(pkgs), installed())
 }
 
