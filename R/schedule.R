@@ -3,7 +3,8 @@ plan <- c(
   "02" = "fgeo.base",
   "03" = "fgeo.ctfs",
   "04" = "fgeo.tool",
-  "05" = "fgeo.map"
+  "05" = "fgeo.map",
+  "zz" = "fgeo"
 )
 
 #' Sort packages in the order they should be installed.

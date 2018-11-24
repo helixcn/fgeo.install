@@ -8,9 +8,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' update_fgeo_source("../fgeo/inst/extdata/source")
+#' update_fgeo_source()
 #' }
-update_fgeo_source <- function(pkgs = fgeo::fgeo_dependencies("fgeo", FALSE),
+update_fgeo_source <- function(pkgs = fgeo::fgeo_dependencies("fgeo", TRUE),
                                src = "inst/extdata/source") {
   urls <- glue("forestgeo/{pkgs}")
 

@@ -9,23 +9,22 @@
 #' @export
 #'
 #' @examples
-#' guide_installation(
-#'   c("pkg1", "pkg2"),
-#'   "You need to install the following packages from CRAN:",
-#'   "Click 'Session > Restart R' to start a clean R session, then run:"
-#' )
+#' guide_installation(c("pkg1", "pkg2"))
 guide_installation <- function(pkgs,
-                               msg_issue,
-                               msg_hint,
-                               bullets =  cli::cat_bullet(format(pkgs))) {
-  cli::cat_line(msg_issue)
+  msg_issue = "You need to install the following packages from CRAN:",
+  msg_hint = "Click 'Session > Restart R' to start a clean R session, then run:",
+  bullets =  cli::cat_bullet(cry_warn(format(pkgs)))) {
+
+  cli::cat_line(cry_warn(msg_issue))
   cli::cat_line()
   bullets
   cli::cat_line()
-  cli::cat_line(msg_hint)
+  cli::cat_line(cry_warn(msg_hint))
+  cli::cat_line()
 
   pkg_str <- paste0(deparse(pkgs), collapse = "\n")
-  cli::cat_line("install.packages(", pkg_str, ")")
+  cli::cat_line(cry_code("install.packages(", pkg_str, ")"))
 
   invisible(pkgs)
 }
+

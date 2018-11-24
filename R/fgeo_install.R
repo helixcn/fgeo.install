@@ -89,4 +89,3 @@ installed <- function() {
 needed <- function(pkgs) {
   setdiff(fs::path_file(pkgs), installed())
 }
-

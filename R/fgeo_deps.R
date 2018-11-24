@@ -1,5 +1,6 @@
 #' Move to fgeo: All packages must be installed.
 #' @author Adapted from tidyverse::tidyverse_update()
+#' @noRd
 NULL
 update_cran_dependencies <- function() {
   behind <- dplyr::filter(deps_behind(), behind)
@@ -9,14 +10,12 @@ update_cran_dependencies <- function() {
     return(invisible())
   }
 
-  bullets <- cli::cat_bullet(
-    format(behind$package), " (", behind$local, " -> ", behind$cran, ")"
-  )
   guide_installation(
     behind$package,
     "The following packages are out-of-date:",
-    "Click 'Session > Restart R' then run:",
-    bullets
+    bullets = cli::cat_bullet(
+      format(behind$package), " (", behind$local, " -> ", behind$cran, ")"
+    )
   )
 
   invisible()

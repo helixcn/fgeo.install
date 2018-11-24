@@ -30,7 +30,9 @@ Imports:
     pkgbuild,
     tibble,
     tidyr,
-    magrittr
+    magrittr,
+    crayon,
+    cli
 Remotes: 
     forestgeo/fgeo
 Roxygen: list(markdown = TRUE)
