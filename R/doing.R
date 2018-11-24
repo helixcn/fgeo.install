@@ -7,14 +7,17 @@
 #' \dontrun{
 #' install_fgeo()
 #' }
-install_fgeo <- function() {
+install_fgeo <- function(...) {
   cran_pkgs <- needed(deps_cran()$package)
 
   request_from_cran(cran_pkgs)
 
   if (all_installed(cran_pkgs)) {
     cli::cat_line(crayon::blue("Installing fgeo packages from source:"))
-    install_these(fgeo_pkgs(), .f = remotes::install_local, upgrade = "never")
+    # remotes::install_local(fgeo_pkgs(), upgrade = "never", ...)
+    install_these(
+      fgeo_pkgs(), .f = remotes::install_local, upgrade = "never", ...
+    )
   }
 
   cli::cat_line(

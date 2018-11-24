@@ -4,7 +4,7 @@
 \alias{install_fgeo}
 \title{Ask users to install fgeo-dependencies from CRAN.}
 \usage{
-install_fgeo()
+install_fgeo(...)
 }
 \value{
 Invisible \code{NULL}.

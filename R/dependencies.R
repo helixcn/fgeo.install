@@ -1,3 +1,17 @@
+#' Shortcut to get all dependencies of fgeo packages, including fgeo itself.
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#' fgeo_deps()
+fgeo_deps <- function() {
+  # List the names of all fgeo packages, including fgeo itself
+  fgeo <- c("fgeo", fgeo::fgeo_dependencies("fgeo"))
+  # Get the dependencies of each package, then remove anything matching "fgeo"
+  dependencies(fgeo, exclude = "fgeo")
+}
+
 #' Find all dependencies_ls of some packages.
 #'
 #' @param pkgs Character vector: The name of installed packages.
@@ -10,13 +24,15 @@
 #' @export
 #'
 #' @examples
-#' pkgs <- fgeo::fgeo_dependencies("fgeo", FALSE)
-#' dependencies(pkgs)
+#' pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
 #' dependencies(pkgs, "Imports")
 #' dependencies(pkgs, "Suggests")
+#'
+#' all_fgeo_packages <- c("fgeo", pkgs)
+#' dependencies(all_fgeo_packages)
 #' dependencies(pkgs, exclude = "fgeo")
 dependencies <- function(pkgs, exclude = NULL, section = "Imports") {
-  deps <- unique(Reduce(c, dependencies_ls(pkgs, section)))
+  deps <- sort(unique(Reduce(c, dependencies_ls(pkgs, section))))
 
   if (!is.null(exclude)) {
     deps <- grep(exclude, deps, value = TRUE, invert = TRUE)

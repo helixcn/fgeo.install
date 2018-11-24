@@ -7,7 +7,7 @@ test_that("retunrs expected dependencies", {
 
   expect_equal(
     dependencies(c("stats", "MASS")),
-    unique(c(dependencies("stats"), dependencies("MASS")))
+    sort(unique(c(dependencies("stats"), dependencies("MASS"))))
   )
 
   expect_equal(

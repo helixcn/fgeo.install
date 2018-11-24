@@ -1,6 +1,3 @@
-pkgs <- fgeo::fgeo_dependencies("fgeo", FALSE)
-cran_dependencies <- dependencies(pkgs, exclude = "fgeo", section = "Imports")
-
 #' Install fgeo from source code.
 #'
 #' @return No return.
@@ -11,12 +8,12 @@ cran_dependencies <- dependencies(pkgs, exclude = "fgeo", section = "Imports")
 #' fgeo_install()
 #' }
 fgeo_install <- function() {
-  from_cran <- install(needed(cran_dependencies))
+  from_cran <- install(needed(fgeo_deps()))
 
   fgeo <- src_pkg(src_paths())
   from_src <- install(needed(fgeo), install_from_source)
 
-  ok_cran <- identical(needed(cran_dependencies), character(0))
+  ok_cran <- identical(needed(fgeo_deps()), character(0))
   if (ok_cran) {
     inform("All CRAN dependencies are already installed.")
   } else {
@@ -72,7 +69,7 @@ pkg_src <- function(pkgs) {
 # Tested ------------------------------------------------------------------
 
 # @param pkgs Package name (CRAN) or path (source).
-install_these <- function(pkgs, lib = NULL, .f = utils::install.packages, ...) {
+install_these <- function(pkgs, lib = NULL, .f = remotes::install_local, ...) {
   force(pkgs)
   .f(pkgs, lib = lib, ...)
 

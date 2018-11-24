@@ -28,16 +28,11 @@ deps_behind <- function() {
 }
 
 deps_cran <- function() {
-  fgeo_pkgs <- fgeo::fgeo_dependencies("fgeo")
-  deps <- list(fgeo = dependencies(fgeo_pkgs, exclude = "fgeo"))
-  pkg_deps <- unique(sort(unlist(deps)))
-
   base_pkgs <- c("base", "compiler", "datasets", "graphics",
     "grDevices", "grid", "methods", "parallel", "splines",
     "stats", "stats4", "tools", "tcltk", "utils")
 
-  pkg_deps <- setdiff(pkg_deps, base_pkgs)
-
+  pkg_deps <- setdiff( fgeo_deps(), base_pkgs)
   pkgs <- utils::available.packages()
   cran_version <- lapply(pkgs[pkg_deps, "Version"], base::package_version)
 

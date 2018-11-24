@@ -12,7 +12,7 @@ test_that("Installs multiple packages from a local source", {
   pkgs_nm <- c("toy1", "toy2")
   pkgs <- purrr::map_chr(pkgs_nm, test_path)
 
-  install_these(pkgs, .f = devtools::install_local, lib = tmp)
+  remotes::install_local(pkgs, lib = tmp)
   expect_equal(fs::path_file(fs::dir_ls(tmp)), pkgs_nm)
 })
 

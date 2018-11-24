@@ -23,10 +23,12 @@ Character vector.
 Find all dependencies_ls of some packages.
 }
 \examples{
-pkgs <- fgeo::fgeo_dependencies("fgeo", FALSE)
-dependencies(pkgs)
+pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
 dependencies(pkgs, "Imports")
 dependencies(pkgs, "Suggests")
+
+all_fgeo_packages <- c("fgeo", pkgs)
+dependencies(all_fgeo_packages)
 dependencies(pkgs, exclude = "fgeo")
 }
 \author{
