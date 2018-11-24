@@ -1,7 +1,8 @@
+#' Move to fgeo: All packages must be installed.
 #' @author Adapted from tidyverse::tidyverse_update()
 NULL
 fgeo_update_cran <- function() {
-  behind <- dplyr::filter(fgeo_deps(), behind)
+  behind <- dplyr::filter(deps_behind(), behind)
   if (nrow(behind) == 0) {
     cli::cat_line("All CRAN fgeo-dependencies up-to-date")
     return(invisible())
@@ -22,13 +23,13 @@ fgeo_update_cran <- function() {
 
 #' @author Adapted from tidyverse::tidyverse_deps()
 NULL
-fgeo_deps_behind <- function() {
-  cbind(fgeo_deps_cran(), fgeo_deps_local())
+deps_behind <- function() {
+  cbind(deps_cran(), deps_local())
 }
 
-fgeo_deps_cran <- function() {
+deps_cran <- function() {
   fgeo_pkgs <- fgeo::fgeo_dependencies("fgeo")
-  deps <- list(fgeo = fgeo.install::dependencies(fgeo_pkgs, exclude = "fgeo"))
+  deps <- list(fgeo = dependencies(fgeo_pkgs, exclude = "fgeo"))
   pkg_deps <- unique(sort(unlist(deps)))
 
   base_pkgs <- c("base", "compiler", "datasets", "graphics",
@@ -46,9 +47,9 @@ fgeo_deps_cran <- function() {
   )
 }
 
-fgeo_deps_local <- function() {
-  local_version <- lapply(fgeo_deps_cran()$package, utils::packageVersion)
-  behind <- purrr::map2_lgl(fgeo_deps_cran()$cran, local_version, `>`)
+deps_local <- function() {
+  local_version <- lapply(deps_cran()$package, utils::packageVersion)
+  behind <- purrr::map2_lgl(deps_cran()$cran, local_version, `>`)
 
   tibble::tibble(
     local = local_version %>% purrr::map_chr(as.character),
