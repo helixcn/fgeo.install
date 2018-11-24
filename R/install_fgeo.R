@@ -13,16 +13,13 @@ install_fgeo <- function(...) {
   request_from_cran(cran_pkgs)
 
   if (all_installed(cran_pkgs)) {
-    cli::cat_line(crayon::blue("Installing fgeo packages from source:"))
-    # remotes::install_local(fgeo_pkgs(), upgrade = "never", ...)
-    install_these(
-      fgeo_pkgs(), .f = remotes::install_local, upgrade = "never", ...
-    )
+    cli::cat_line(cry_note("Installing fgeo packages from source:"))
+    install.packages(fgeo_pkgs(), repos = NULL, type = "source", ...)
   }
 
   cli::cat_line(
-    crayon::blue("Check for updates with: "),
-    crayon::silver("remotes::update_packages()")
+    cry_note("Check for updates with: "),
+    cry_code("remotes::update_packages()")
   )
 
   invisible()
@@ -30,7 +27,7 @@ install_fgeo <- function(...) {
 
 request_from_cran <- function(pkgs) {
   if (all_installed(pkgs)) {
-    cli::cat_line(crayon::green("All CRAN dependencies are installed."))
+    cli::cat_line(cry_done("All CRAN dependencies are installed."))
     return(invisible(pkgs))
   }
 
