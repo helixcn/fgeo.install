@@ -69,19 +69,11 @@ pkg_src <- function(pkgs) {
 
 
 
-
 # Tested ------------------------------------------------------------------
 
 # @param pkgs Package name (CRAN) or path (source).
 install_these <- function(pkgs, lib = NULL, .f = utils::install.packages, ...) {
-  have_pkgs <- identical(needed(pkgs), character(0))
-  if (have_pkgs) {
-    message("Required packages are already installed.")
-    return(invisible(pkgs))
-  }
-
-  # As documented in install.packages()
-  lib <- if (is.null(lib)) .libPaths()[[1]]
+  force(pkgs)
   .f(pkgs, lib = lib, ...)
 
   invisible(pkgs)

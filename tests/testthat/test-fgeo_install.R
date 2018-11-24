@@ -1,34 +1,27 @@
 context("fgeo_install")
 
-
-
 test_that("errs with informative message", {
   expect_error(install_these(), "is missing.*no default")
 })
 
-test_that("Outputs invisible `pkgs`", {
-  out <- install_these("base")
-  expect_equal(out, "base")
-})
-
-test_that("Informs if required packages are already installed", {
-  expect_message(
-    install_these("base", .f = utils::install.packages),
-    "packages.*already.*installed"
-  )
+test_that("Installs multiple packages from CRAN", {
+  pkgs <- c("io", "clipr")
+  remove.packages(pkgs)
+  out <- capture_output(install_these(pkgs))
+  expect_true(grepl("package.*io.*successfully unpacked", out))
+  expect_true(grepl("package.*clipr.*successfully unpacked", out))
 })
 
 test_that("Installs multiple packages from a local source", {
   tmp <- tempfile()
   fs::dir_create(tmp)
   .libPaths(tmp)
-  expect_true(is.null(installed(tmp)))
 
   pkgs_nm <- c("toy1", "toy2")
   pkgs <- purrr::map_chr(pkgs_nm, test_path)
 
   install_these(pkgs, .f = devtools::install_local, lib = tmp)
-  expect_equal(installed(tmp), pkgs_nm)
+  expect_equal(fs::path_file(fs::dir_ls(tmp)), pkgs_nm)
 })
 
 

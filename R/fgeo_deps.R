@@ -1,22 +1,23 @@
 #' Move to fgeo: All packages must be installed.
 #' @author Adapted from tidyverse::tidyverse_update()
 NULL
-fgeo_update_cran <- function() {
+update_cran_dependencies <- function() {
   behind <- dplyr::filter(deps_behind(), behind)
+
   if (nrow(behind) == 0) {
-    cli::cat_line("All CRAN fgeo-dependencies up-to-date")
+    cli::cat_line("All dependencies are up-to-date.")
     return(invisible())
   }
 
-  cli::cat_line("The following CRAN packages are out of date:")
-  cli::cat_line()
-  cli::cat_bullet(format(behind$package), " (", behind$local,
-    " -> ", behind$cran, ")")
-  cli::cat_line()
-  cli::cat_line("Click 'Session > Restart R' then run:")
-
-  pkg_str <- paste0(deparse(behind$package), collapse = "\n")
-  cli::cat_line("install.packages(", pkg_str, ")")
+  bullets <- cli::cat_bullet(
+    format(behind$package), " (", behind$local, " -> ", behind$cran, ")"
+  )
+  guide_installation(
+    behind$package,
+    "The following packages are out-of-date:",
+    "Click 'Session > Restart R' then run:",
+    bullets
+  )
 
   invisible()
 }

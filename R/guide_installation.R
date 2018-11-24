@@ -15,9 +15,9 @@
 #'   "Click 'Session > Restart R' to start a clean R session, then run:"
 #' )
 guide_installation <- function(pkgs,
-  msg_issue,
-  msg_hint,
-  bullets =  cli::cat_bullet(format(pkgs))) {
+                               msg_issue,
+                               msg_hint,
+                               bullets =  cli::cat_bullet(format(pkgs))) {
   cli::cat_line(msg_issue)
   cli::cat_line()
   bullets
