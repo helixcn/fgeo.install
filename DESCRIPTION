@@ -14,7 +14,8 @@ License: GPL-3
 Depends: 
     R (>= 3.2)
 Imports: 
-    crayon
+    crayon,
+    withr
 Suggests: 
     testthat
 Encoding: UTF-8

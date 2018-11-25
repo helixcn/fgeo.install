@@ -7,5 +7,5 @@ source("data-raw/schedule.R")
 #'
 #' @examples
 #' fgeo_source()
-scheduled_packages <- schedule(list.files(path_source()), plan)
+scheduled_packages <- schedule(list.files(fgeo.install::path_source()), plan)
 use_data(scheduled_packages, overwrite = TRUE)
