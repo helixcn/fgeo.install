@@ -17,5 +17,5 @@ Simpler version of \code{fgeo::fgeo()}.
 }
 \examples{
 fgeo()
-fgeo(include_self = FALSE)
+fgeo(FALSE)
 }
