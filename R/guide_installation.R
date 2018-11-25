@@ -15,7 +15,7 @@ guide_installation <- function(pkgs) {
     cry_warn("1) Start a clean session by clicking 'Session > Restart R'")
   )
   cat_line(
-    cry_warn("2) Run the following code then rerun "),
+    cry_warn("2) Copy-paste and run the code below, then rerun "),
     cry_code("`fgeo.install::install_fgeo()`:")
   )
   cat_line()
