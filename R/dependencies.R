@@ -21,11 +21,10 @@ fgeo_deps <- function() {
 #' @export
 #'
 #' @examples
-#' dependencies(fgeo())
-#' dependencies(fgeo(), exclude = "fgeo")
-#'
-#' dependencies_ls(fgeo())
-#' dependencies_ls(fgeo(), section = "Suggests")
+#' dependencies("fgeo.install")
+#' dependencies("crayon")
+#' dependencies("crayon", exclude = "utils")
+#' dependencies("fgeo.install", section = "Suggests")
 dependencies <- function(pkgs, exclude = NULL, section = "Imports") {
   deps <- sort(unique(Reduce(c, dependencies_ls(pkgs, section))))
 

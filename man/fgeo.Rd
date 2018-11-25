@@ -13,7 +13,7 @@ fgeo(include_self = TRUE)
 Character vector.
 }
 \description{
-Simpler version of \code{fgeo::fgeo()}.
+fgeo packages.
 }
 \examples{
 fgeo()
