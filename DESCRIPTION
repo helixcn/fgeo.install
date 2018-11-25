@@ -25,14 +25,13 @@ Imports:
     glue,
     rlang,
     purrr,
-    fgeo (>= 0.0.0.9002),
+    fgeo,
     stringr,
     pkgbuild,
     tibble,
     tidyr,
     magrittr,
     crayon,
-    cli,
     dplyr
 Remotes: 
     forestgeo/fgeo

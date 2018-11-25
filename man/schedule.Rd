@@ -27,8 +27,7 @@ plan <- c(
   "05" = "fgeo.map"
 )
 
-pkgs <- dir_ls("inst/extdata/source")
-schedule(pkgs)
+schedule(fgeo_source())
 
 # WARNING: Bad order -- for demonstration
 # The rescheduling affects only the planed pakcages. Then alpha ordered.
@@ -37,6 +36,5 @@ plan <- c(
   "02" = "fgeo.x"
 )
 
-pkgs <- dir_ls("inst/extdata/source")
-schedule(pkgs)
+schedule(fgeo_source())
 }

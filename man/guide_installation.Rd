@@ -7,7 +7,7 @@
 guide_installation(pkgs,
   msg_issue = "You need to install the following packages from CRAN:",
   msg_hint = "Click 'Session > Restart R' to start a clean R session, then run:",
-  bullets = cli::cat_bullet(cry_warn(format(pkgs))))
+  bullets = cat_bullet(cry_warn(format(pkgs))))
 }
 \arguments{
 \item{pkgs}{Character vector: The names of the packages to install.}

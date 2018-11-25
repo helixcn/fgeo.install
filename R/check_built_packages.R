@@ -1,6 +1,6 @@
 #' Check multiple built source-packages.
 #'
-#' @param src_pkgs Character vector: The paths to built source-packages to
+#' @param pkgs Character vector: The paths to built source-packages to
 #'   check.
 #'
 #' @return A [tibble][tibble-package].
@@ -12,17 +12,17 @@
 #' tmp <- tempdir()
 #'
 #' build_github(urls, tmp)
-#' src_pkgs <- fs::dir_ls(tmp, glob = "*.tar.gz")
-#' src_pkgs
+#' pkgs <- fs::dir_ls(tmp, glob = "*.tar.gz")
+#' pkgs
 #'
-#' out <- check_built_packages(src_pkgs)
+#' out <- check_built_packages()
 #' out
 #' }
-check_built_packages <- function(src_pkgs) {
-  is_source_package <- all(grepl("[.]tar[.]gz", src_pkgs))
-  if (!is_source_package) abort("All `src_pkgs` must have extension .tar.gz")
+check_built_packages <- function(pkgs = fgeo_source()) {
+  is_source_package <- all(grepl("[.]tar[.]gz", pkgs))
+  if (!is_source_package) abort("All `pkgs` must have extension .tar.gz")
 
-  out <- map(src_pkgs, devtools::check_built)
+  out <- map(pkgs, devtools::check_built)
   results <- out %>%
     map(~.x[c("errors", "warnings", "notes")]) %>%
     purrr::transpose() %>%

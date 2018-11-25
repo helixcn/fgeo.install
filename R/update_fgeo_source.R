@@ -11,7 +11,7 @@
 #' update_fgeo_source()
 #' }
 update_fgeo_source <- function(pkgs = fgeo::fgeo_dependencies("fgeo", TRUE),
-                               src = "inst/extdata/source") {
+                               src = path_source()) {
   urls <- glue("forestgeo/{pkgs}")
 
   if (dir_exists(src)) dir_delete(src)

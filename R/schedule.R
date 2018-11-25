@@ -25,8 +25,7 @@ plan <- c(
 #'   "05" = "fgeo.map"
 #' )
 #'
-#' pkgs <- fs::dir_ls("inst/extdata/source")
-#' schedule(pkgs)
+#' schedule(fgeo_source())
 #'
 #' # WARNING: Bad order -- for demonstration
 #' # The rescheduling affects only the planed pakcages. Then alpha ordered.
@@ -35,8 +34,7 @@ plan <- c(
 #'   "02" = "fgeo.x"
 #' )
 #'
-#' pkgs <- fs::dir_ls("inst/extdata/source")
-#' schedule(pkgs)
+#' schedule(fgeo_source())
 schedule <- function(pkgs, plan) {
   x <- rlang::set_names(pkgs, prefix(pkgs, plan))
   unname(x[sort(names(x))])

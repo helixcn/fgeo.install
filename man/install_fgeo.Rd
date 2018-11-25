@@ -4,7 +4,7 @@
 \alias{install_fgeo}
 \title{Ask users to install fgeo-dependencies from CRAN.}
 \usage{
-install_fgeo(...)
+install_fgeo()
 }
 \arguments{
 \item{...}{Arguments passed to \code{\link[utils:install.packages]{utils::install.packages()}}.}

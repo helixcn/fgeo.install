@@ -3,7 +3,7 @@
 \name{dependencies}
 \alias{dependencies}
 \alias{dependencies_ls}
-\title{Find all dependencies_ls of some packages.}
+\title{Find all dependencies of some packages.}
 \usage{
 dependencies(pkgs, exclude = NULL, section = "Imports")
 
@@ -20,16 +20,14 @@ dependencies_ls(pkgs, section = "Imports")
 Character vector.
 }
 \description{
-Find all dependencies_ls of some packages.
+Find all dependencies of some packages.
 }
 \examples{
-pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
-dependencies(pkgs, "Imports")
-dependencies(pkgs, "Suggests")
+dependencies(fgeo::fgeo())
+dependencies(fgeo::fgeo(), exclude = "fgeo")
 
-all_fgeo_packages <- c("fgeo", pkgs)
-dependencies(all_fgeo_packages)
-dependencies(pkgs, exclude = "fgeo")
+dependencies_ls(fgeo::fgeo())
+dependencies_ls(fgeo::fgeo(), section = "Suggests")
 }
 \author{
 Adapted from \strong{tidyverse}.

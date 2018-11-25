@@ -9,17 +9,19 @@
 #' \dontrun{
 #' install_fgeo()
 #' }
-install_fgeo <- function(...) {
-  cran_pkgs <- needed(deps_cran()$package)
+install_fgeo <- function() {
+  cran_packages <- needed(
+    dependencies(fgeo::fgeo(), exclude = "fgeo", section = "Imports")
+  )
 
-  request_from_cran(cran_pkgs)
+  request_install(cran_packages)
 
-  if (all_installed(cran_pkgs)) {
-    cli::cat_line(cry_note("Installing fgeo packages from source:"))
-    utils::install.packages(fgeo_source(), repos = NULL, type = "source", ...)
+  if (all_installed(cran_packages)) {
+    cat_line(cry_note("Installing fgeo packages from source:"))
+    utils::install.packages(fgeo_source(), repos = NULL, type = "source")
   }
 
-  cli::cat_line(
+  cat_line(
     cry_note("Check for updates with: "),
     cry_code("remotes::update_packages()")
   )
@@ -27,9 +29,9 @@ install_fgeo <- function(...) {
   invisible()
 }
 
-request_from_cran <- function(pkgs) {
+request_install <- function(pkgs) {
   if (all_installed(pkgs)) {
-    cli::cat_line(cry_done("All CRAN dependencies are installed."))
+    cat_line(cry_done("All CRAN dependencies are installed."))
     return(invisible(pkgs))
   }
 
@@ -41,10 +43,24 @@ all_installed <- function(pkgs) {
   identical(pkgs, character(0))
 }
 
+#' Paths to source packages, in the order they should be installed.
+#'
+#' @return Character vector.
+#' @export
+#'
+#' @examples
+#' fgeo_source()
 fgeo_source <- function() {
   schedule(fs::dir_ls(path_source()), plan)
 }
 
+#' Path to inst/extdata/source.
+#'
+#' @return Character vector.
+#' @export
+#'
+#' @examples
+#' path_source()
 path_source <- function() {
   system.file("extdata", "source", package = "fgeo.install")
 }

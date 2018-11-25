@@ -6,13 +6,10 @@
 #' @examples
 #' fgeo_deps()
 fgeo_deps <- function() {
-  # List the names of all fgeo packages, including fgeo itself
-  fgeo <- c("fgeo", fgeo::fgeo_dependencies("fgeo"))
-  # Get the dependencies of each package, then remove anything matching "fgeo"
-  dependencies(fgeo, exclude = "fgeo")
+  dependencies(fgeo::fgeo())
 }
 
-#' Find all dependencies_ls of some packages.
+#' Find all dependencies of some packages.
 #'
 #' @param pkgs Character vector: The name of installed packages.
 #' @param exclude String. Pattern to exclude from output.
@@ -24,13 +21,11 @@ fgeo_deps <- function() {
 #' @export
 #'
 #' @examples
-#' pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
-#' dependencies(pkgs, "Imports")
-#' dependencies(pkgs, "Suggests")
+#' dependencies(fgeo::fgeo())
+#' dependencies(fgeo::fgeo(), exclude = "fgeo")
 #'
-#' all_fgeo_packages <- c("fgeo", pkgs)
-#' dependencies(all_fgeo_packages)
-#' dependencies(pkgs, exclude = "fgeo")
+#' dependencies_ls(fgeo::fgeo())
+#' dependencies_ls(fgeo::fgeo(), section = "Suggests")
 dependencies <- function(pkgs, exclude = NULL, section = "Imports") {
   deps <- sort(unique(Reduce(c, dependencies_ls(pkgs, section))))
 

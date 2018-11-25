@@ -5,7 +5,7 @@
 \title{Build fgeo source-packages from github into a local directory.}
 \usage{
 update_fgeo_source(pkgs = fgeo::fgeo_dependencies("fgeo", TRUE),
-  src = "inst/extdata/source")
+  src = path_source())
 }
 \arguments{
 \item{pkgs}{Character vector: The name of packages to update.}
