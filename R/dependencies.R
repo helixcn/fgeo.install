@@ -1,14 +1,3 @@
-#' Shortcut to get all dependencies of fgeo packages, including fgeo itself.
-#'
-#' @return A character vector.
-#' @export
-#'
-#' @examples
-#' fgeo_deps()
-fgeo_deps <- function() {
-  dependencies(fgeo())
-}
-
 #' Find all dependencies of some packages.
 #'
 #' @param pkgs Character vector: The name of installed packages.

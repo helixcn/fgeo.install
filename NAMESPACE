@@ -3,7 +3,6 @@
 export(dependencies)
 export(dependencies_ls)
 export(fgeo)
-export(fgeo_deps)
 export(fgeo_source)
 export(guide_installation)
 export(install_fgeo)
