@@ -10,16 +10,17 @@
 #'
 #' @examples
 #' guide_installation(c("pkg1", "pkg2"))
-guide_installation <- function(pkgs,
-  msg_issue = "You need to install the following packages from CRAN:",
-  msg_hint = "Click 'Session > Restart R' to start a clean R session, then run:",
-  bullets =  cat_bullet(cry_warn(format(pkgs)))) {
-
-  cat_line(cry_warn(msg_issue))
+guide_installation <- function(pkgs) {
+  cat_line("You need to install the following packages from CRAN:")
+  cat_bullet(format(pkgs))
   cat_line()
-  bullets
-  cat_line()
-  cat_line(cry_warn(msg_hint))
+  cat_line(
+    cry_warn("1) Start a clean session by clicking 'Session > Restart R'")
+  )
+  cat_line(
+    cry_warn("2) Run the following code then rerun "),
+    cry_code("`fgeo.install::install_fgeo()`:")
+  )
   cat_line()
 
   pkg_str <- paste0(deparse(pkgs), collapse = "\n")

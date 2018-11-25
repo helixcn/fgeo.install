@@ -6,9 +6,6 @@
 \usage{
 install_fgeo()
 }
-\arguments{
-\item{...}{Arguments passed to \code{\link[utils:install.packages]{utils::install.packages()}}.}
-}
 \value{
 Invisible \code{NULL}.
 }

@@ -25,7 +25,7 @@ plan <- c(
 #'   "05" = "fgeo.map"
 #' )
 #'
-#' schedule(fgeo_source())
+#' schedule(fgeo_source(), plan)
 #'
 #' # WARNING: Bad order -- for demonstration
 #' # The rescheduling affects only the planed pakcages. Then alpha ordered.
@@ -34,7 +34,7 @@ plan <- c(
 #'   "02" = "fgeo.x"
 #' )
 #'
-#' schedule(fgeo_source())
+#' schedule(fgeo_source(), plan)
 schedule <- function(pkgs, plan) {
   x <- stats::setNames(pkgs, prefix(pkgs, plan))
   unname(x[sort(names(x))])

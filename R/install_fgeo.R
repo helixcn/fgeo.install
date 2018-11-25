@@ -1,7 +1,5 @@
 #' Ask users to install fgeo-dependencies from CRAN.
 #'
-#' @param ... Arguments passed to [utils::install.packages()].
-#'
 #' @return Invisible `NULL`.
 #' @export
 #'
@@ -19,12 +17,12 @@ install_fgeo <- function() {
   if (all_installed(cran_packages)) {
     cat_line(cry_note("Installing fgeo packages from source:"))
     utils::install.packages(fgeo_source(), repos = NULL, type = "source")
-  }
 
-  cat_line(
-    cry_note("Check for updates with: "),
-    cry_code("remotes::update_packages()")
-  )
+    cat_line(
+      cry_note("To check for updates run "),
+      cry_code("`remotes::update_packages()`")
+    )
+  }
 
   invisible()
 }

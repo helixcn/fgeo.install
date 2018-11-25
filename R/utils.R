@@ -1,3 +1,6 @@
+#' @importFrom crayon silver green cyan magenta red
+NULL
+
 # crayon colors
 cry_code <- silver
 cry_done <- green
