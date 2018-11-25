@@ -68,16 +68,18 @@ schedule <- function(pkgs, plan) {
 #' x2 <- prefix(x, prefix, sep = "")
 #' sort(x2)
 #'
-#' # Useful to plan the order in which these packages should be installed
-#' pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
-#' plan <- c(
-#'   "01" = "fgeo.x",
-#'   "02" = "fgeo.base",
-#'   "03" = "fgeo.ctfs",
-#'   "04" = "fgeo.tool",
-#'   "05" = "fgeo.map"
-#' )
-#' prefix(pkgs, plan)
+#' if requireNamespace("fgeo") {
+#'   # Useful to plan the order in which these packages should be installed
+#'   pkgs <- fgeo::fgeo_dependencies("fgeo", include_self = FALSE)
+#'   plan <- c(
+#'     "01" = "fgeo.x",
+#'     "02" = "fgeo.base",
+#'     "03" = "fgeo.ctfs",
+#'     "04" = "fgeo.tool",
+#'     "05" = "fgeo.map"
+#'   )
+#'   prefix(pkgs, plan)
+#' }
 prefix <- function(x, .prefix, sep = "_") {
   pfx <- paste0(names(.prefix), sep, .prefix, sep)
   .prefix <- stats::setNames(pfx, .prefix)

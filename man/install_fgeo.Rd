@@ -4,7 +4,10 @@
 \alias{install_fgeo}
 \title{Ask users to install fgeo-dependencies from CRAN.}
 \usage{
-install_fgeo()
+install_fgeo(pkgs = fgeo_source())
+}
+\arguments{
+\item{pkgs}{Character vector: Path to source packages to install.}
 }
 \value{
 Invisible \code{NULL}.
@@ -14,6 +17,10 @@ Ask users to install fgeo-dependencies from CRAN.
 }
 \examples{
 \dontrun{
+# Two packages from the top of the installation schedule.
+install_fgeo(fgeo_source()[1:2])
+
+# All packags
 install_fgeo()
 }
 }

@@ -8,12 +8,6 @@ guide_installation(pkgs)
 }
 \arguments{
 \item{pkgs}{Character vector: The names of the packages to install.}
-
-\item{msg_issue}{Character vector: A message about the general issue.}
-
-\item{msg_hint}{Character vector: A message about the code to run.}
-
-\item{bullets}{Bullets (see default).}
 }
 \value{
 Text output as with \code{cat()} and invisible \code{pkgs}.

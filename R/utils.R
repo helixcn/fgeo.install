@@ -19,3 +19,6 @@ cat_bullet <- function(..., col = NULL, bullet = "*") {
   out <- paste0(...)
   cat_line(paste(bullet, out))
 }
+
+
+

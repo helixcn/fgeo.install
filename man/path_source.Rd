@@ -2,16 +2,26 @@
 % Please edit documentation in R/install_fgeo.R
 \name{path_source}
 \alias{path_source}
-\title{Path to inst/extdata/source.}
+\alias{fgeo_source}
+\title{Path to source fgeo packages.}
 \usage{
-path_source()
+path_source(path = NULL)
+
+fgeo_source()
+}
+\arguments{
+\item{path}{Character vector: Path to a file in inst/extdata/source.}
 }
 \value{
 Character vector.
 }
 \description{
-Path to inst/extdata/source.
+Path to source fgeo packages.
 }
 \examples{
 path_source()
+
+path_source(fgeo.install::scheduled_packages)
+# Evocative shortcut
+fgeo_source()
 }

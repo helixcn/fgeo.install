@@ -23,11 +23,11 @@ Character vector.
 Find all dependencies of some packages.
 }
 \examples{
-dependencies(fgeo::fgeo())
-dependencies(fgeo::fgeo(), exclude = "fgeo")
+dependencies(fgeo())
+dependencies(fgeo(), exclude = "fgeo")
 
-dependencies_ls(fgeo::fgeo())
-dependencies_ls(fgeo::fgeo(), section = "Suggests")
+dependencies_ls(fgeo())
+dependencies_ls(fgeo(), section = "Suggests")
 }
 \author{
 Adapted from \strong{tidyverse}.

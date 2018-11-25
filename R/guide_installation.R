@@ -1,9 +1,6 @@
 #' Give installation instructions.
 #'
 #' @param pkgs Character vector: The names of the packages to install.
-#' @param msg_issue Character vector: A message about the general issue.
-#' @param msg_hint Character vector: A message about the code to run.
-#' @param bullets Bullets (see default).
 #'
 #' @return Text output as with `cat()` and invisible `pkgs`.
 #' @export

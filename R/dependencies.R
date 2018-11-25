@@ -6,7 +6,7 @@
 #' @examples
 #' fgeo_deps()
 fgeo_deps <- function() {
-  dependencies(fgeo::fgeo())
+  dependencies(fgeo())
 }
 
 #' Find all dependencies of some packages.
@@ -21,11 +21,11 @@ fgeo_deps <- function() {
 #' @export
 #'
 #' @examples
-#' dependencies(fgeo::fgeo())
-#' dependencies(fgeo::fgeo(), exclude = "fgeo")
+#' dependencies(fgeo())
+#' dependencies(fgeo(), exclude = "fgeo")
 #'
-#' dependencies_ls(fgeo::fgeo())
-#' dependencies_ls(fgeo::fgeo(), section = "Suggests")
+#' dependencies_ls(fgeo())
+#' dependencies_ls(fgeo(), section = "Suggests")
 dependencies <- function(pkgs, exclude = NULL, section = "Imports") {
   deps <- sort(unique(Reduce(c, dependencies_ls(pkgs, section))))
 
