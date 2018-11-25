@@ -25,7 +25,7 @@ plan <- c(
 #'   "05" = "fgeo.map"
 #' )
 #'
-#' pkgs <- dir_ls("inst/extdata/source")
+#' pkgs <- fs::dir_ls("inst/extdata/source")
 #' schedule(pkgs)
 #'
 #' # WARNING: Bad order -- for demonstration
@@ -35,7 +35,7 @@ plan <- c(
 #'   "02" = "fgeo.x"
 #' )
 #'
-#' pkgs <- dir_ls("inst/extdata/source")
+#' pkgs <- fs::dir_ls("inst/extdata/source")
 #' schedule(pkgs)
 schedule <- function(pkgs, plan) {
   x <- rlang::set_names(pkgs, prefix(pkgs, plan))

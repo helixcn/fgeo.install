@@ -33,9 +33,9 @@ urls <- c("maurolepore/toy1", "maurolepore/toy2")
 tmp <- tempdir()
 
 download_github_zip(urls, tmp)
-dir_ls(tmp, glob = "*.zip")
+fs::dir_ls(tmp, glob = "*.zip")
 
 build_github(urls, tmp)
-dir_ls(tmp, glob = "*.tar.gz")
+fs::dir_ls(tmp, glob = "*.tar.gz")
 }
 }

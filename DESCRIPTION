@@ -32,7 +32,8 @@ Imports:
     tidyr,
     magrittr,
     crayon,
-    cli
+    cli,
+    dplyr
 Remotes: 
     forestgeo/fgeo
 Roxygen: list(markdown = TRUE)

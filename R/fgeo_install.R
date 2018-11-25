@@ -50,8 +50,7 @@ install_from_source <- function(pkgs) {
 }
 
 src_paths <- function() {
-  path <- system.file("extdata", "source", package = "fgeo.install")
-  list.files(path, full.names = TRUE)
+  list.files(path_source(), full.names = TRUE)
 }
 
 # Convert source paths to package names
@@ -79,7 +78,7 @@ install_these <- function(pkgs, lib = NULL, .f = remotes::install_local, ...) {
 # Helpers -----------------------------------------------------------------
 
 installed <- function() {
-  unname(rownames(installed.packages()))
+  sort(unname(rownames(utils::installed.packages())))
 }
 
 # @param pkgs Package names (CRAN) or paths to their source.

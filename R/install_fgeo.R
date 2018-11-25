@@ -1,5 +1,7 @@
 #' Ask users to install fgeo-dependencies from CRAN.
 #'
+#' @param ... Arguments passed to [utils::install.packages()].
+#'
 #' @return Invisible `NULL`.
 #' @export
 #'
@@ -14,7 +16,7 @@ install_fgeo <- function(...) {
 
   if (all_installed(cran_pkgs)) {
     cli::cat_line(cry_note("Installing fgeo packages from source:"))
-    install.packages(fgeo_pkgs(), repos = NULL, type = "source", ...)
+    utils::install.packages(fgeo_source(), repos = NULL, type = "source", ...)
   }
 
   cli::cat_line(
@@ -39,11 +41,10 @@ all_installed <- function(pkgs) {
   identical(pkgs, character(0))
 }
 
-fgeo_pkgs <- function() {
-  src <- fs::dir_ls(system.file("extdata", "source", package = "fgeo.install"))
-  schedule(src, plan)
+fgeo_source <- function() {
+  schedule(fs::dir_ls(path_source()), plan)
 }
 
-pkgs_src <- function() {
-  schedule(fs::dir_ls("inst/extdata/source"), plan)
+path_source <- function() {
+  system.file("extdata", "source", package = "fgeo.install")
 }
