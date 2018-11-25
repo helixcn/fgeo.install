@@ -15,15 +15,15 @@ guide_installation <- function(pkgs,
   msg_hint = "Click 'Session > Restart R' to start a clean R session, then run:",
   bullets =  cli::cat_bullet(cry_warn(format(pkgs)))) {
 
-  cli::cat_line(cry_warn(msg_issue))
-  cli::cat_line()
+  cat_line(cry_warn(msg_issue))
+  cat_line()
   bullets
-  cli::cat_line()
-  cli::cat_line(cry_warn(msg_hint))
-  cli::cat_line()
+  cat_line()
+  cat_line(cry_warn(msg_hint))
+  cat_line()
 
   pkg_str <- paste0(deparse(pkgs), collapse = "\n")
-  cli::cat_line(cry_code("install.packages(", pkg_str, ")"))
+  cat_line(cry_code("install.packages(", pkg_str, ")"))
 
   invisible(pkgs)
 }
