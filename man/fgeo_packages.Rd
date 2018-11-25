@@ -3,12 +3,12 @@
 \docType{data}
 \name{fgeo_packages}
 \alias{fgeo_packages}
-\title{Name of fgeo packages.}
+\title{Name of \strong{fgeo} packages.}
 \format{An object of class \code{character} of length 9.}
 \usage{
 fgeo_packages
 }
 \description{
-Name of fgeo packages.
+Name of \strong{fgeo} packages.
 }
 \keyword{datasets}

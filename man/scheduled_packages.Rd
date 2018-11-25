@@ -3,12 +3,12 @@
 \docType{data}
 \name{scheduled_packages}
 \alias{scheduled_packages}
-\title{Source fgeo packages, ordered as they should be installed.}
+\title{Source \strong{fgeo} packages, ordered as they should be installed.}
 \format{An object of class \code{character} of length 9.}
 \usage{
 scheduled_packages
 }
 \description{
-Source fgeo packages, ordered as they should be installed.
+Source \strong{fgeo} packages, ordered as they should be installed.
 }
 \keyword{datasets}

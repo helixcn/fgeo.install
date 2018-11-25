@@ -14,9 +14,7 @@
 #' install_fgeo()
 #' }
 install_fgeo <- function(pkgs = fgeo_source()) {
-  cran_packages <- needed(
-    dependencies(fgeo(), exclude = "fgeo", section = "Imports")
-  )
+  cran_packages <- needed(fgeo.install::cran_packages)
 
   request_install(cran_packages)
 
