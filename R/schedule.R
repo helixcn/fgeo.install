@@ -36,7 +36,7 @@ plan <- c(
 #'
 #' schedule(fgeo_source())
 schedule <- function(pkgs, plan) {
-  x <- rlang::set_names(pkgs, prefix(pkgs, plan))
+  x <- stats::setNames(pkgs, prefix(pkgs, plan))
   unname(x[sort(names(x))])
 }
 
@@ -79,8 +79,8 @@ schedule <- function(pkgs, plan) {
 #' )
 #' prefix(pkgs, plan)
 prefix <- function(x, .prefix, sep = "_") {
-  .prefix <-
-    rlang::set_names(glue("{names(.prefix)}{sep}{.prefix}{sep}"), .prefix)
+  pfx <- paste0(names(.prefix), sep, .prefix, sep)
+  .prefix <- stats::setNames(pfx, .prefix)
 
   stringr::str_replace_all(x, .prefix)
 }

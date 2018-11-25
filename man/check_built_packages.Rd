@@ -4,10 +4,10 @@
 \alias{check_built_packages}
 \title{Check multiple built source-packages.}
 \usage{
-check_built_packages(src_pkgs)
+check_built_packages(pkgs = fgeo_source())
 }
 \arguments{
-\item{src_pkgs}{Character vector: The paths to built source-packages to
+\item{pkgs}{Character vector: The paths to built source-packages to
 check.}
 }
 \value{
@@ -22,10 +22,10 @@ urls <- c("maurolepore/toy1", "maurolepore/toy2")
 tmp <- tempdir()
 
 build_github(urls, tmp)
-src_pkgs <- fs::dir_ls(tmp, glob = "*.tar.gz")
-src_pkgs
+pkgs <- fs::dir_ls(tmp, glob = "*.tar.gz")
+pkgs
 
-out <- check_built_packages(src_pkgs)
+out <- check_built_packages()
 out
 }
 }

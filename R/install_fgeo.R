@@ -51,7 +51,7 @@ all_installed <- function(pkgs) {
 #' @examples
 #' fgeo_source()
 fgeo_source <- function() {
-  schedule(fs::dir_ls(path_source()), plan)
+  schedule(list.files(path_source(), full.names = TRUE), plan)
 }
 
 #' Path to inst/extdata/source.

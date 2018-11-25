@@ -7,6 +7,6 @@ test_that("with one package, builds that package", {
 
   update_fgeo_source(pkgs, tmp)
   out <- dir_ls(tmp, glob = "*tar.gz")
-  pattern <- glue_collapse(pkgs, "|")
+  pattern <- glue::glue_collapse(pkgs, "|")
   expect_true(all(grepl(pattern, out)))
 })

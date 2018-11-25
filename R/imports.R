@@ -1,6 +1,4 @@
-#' @importFrom glue glue glue_collapse
-#' @importFrom rlang %||% abort warn inform
-#' @importFrom purrr walk walk2 map map_chr map_lgl
+#' @importFrom glue glue
 #' @importFrom fs dir_ls dir_exists dir_delete dir_create
 #' @importFrom crayon silver green cyan magenta red
 NULL

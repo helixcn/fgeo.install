@@ -4,5 +4,5 @@
 #' @noRd
 needed <- function(pkgs) {
   installed <- unname(rownames(utils::installed.packages()))
-  setdiff(fs::path_file(pkgs), installed)
+  setdiff(basename(pkgs), installed)
 }

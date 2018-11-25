@@ -13,26 +13,23 @@ Description: A helper for installing fgeo.
 License: GPL-3
 Depends: 
     R (>= 3.2)
+Imports: 
+    crayon,
+    devtools,
+    fgeo,
+    fs,
+    glue,
+    magrittr,
+    pkgbuild,
+    purrr,
+    stringr,
+    tibble,
+    tidyr
 Suggests: 
     testthat
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 6.1.1
-Imports: 
-    devtools,
-    fs,
-    usethis,
-    glue,
-    rlang,
-    purrr,
-    fgeo,
-    stringr,
-    pkgbuild,
-    tibble,
-    tidyr,
-    magrittr,
-    crayon,
-    dplyr
 Remotes: 
     forestgeo/fgeo
+Encoding: UTF-8
+LazyData: true
 Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
