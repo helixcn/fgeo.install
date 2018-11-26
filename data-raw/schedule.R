@@ -14,7 +14,7 @@ plan <- c(
 #' @param plan Character vector. See examples.
 #'
 #' @return Character vector ordered as packages should be installed.
-#' @export
+#' @keywords internal
 #'
 #' @examples
 #' plan <- c(
@@ -35,6 +35,7 @@ plan <- c(
 #' )
 #'
 #' schedule(fgeo_source(), plan)
+#' @noRd
 schedule <- function(pkgs, plan) {
   x <- stats::setNames(pkgs, prefix(pkgs, plan))
   unname(x[sort(names(x))])
@@ -50,7 +51,7 @@ schedule <- function(pkgs, plan) {
 #' @param sep Separator to surround the pattern with.
 #'
 #' @return A character vector.
-#' @export
+#' @keywords internal
 #'
 #' @examples
 #' x <- letters[1:3]
@@ -80,6 +81,7 @@ schedule <- function(pkgs, plan) {
 #'   )
 #'   prefix(pkgs, plan)
 #' }
+#' @noRd
 prefix <- function(x, .prefix, sep = "_") {
   pfx <- paste0(names(.prefix), sep, .prefix, sep)
   .prefix <- stats::setNames(pfx, .prefix)

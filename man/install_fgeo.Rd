@@ -2,25 +2,33 @@
 % Please edit documentation in R/install_fgeo.R
 \name{install_fgeo}
 \alias{install_fgeo}
-\title{Ask users to install fgeo-dependencies from CRAN.}
+\alias{install_dependencies}
+\title{Install fgeo packages and ask or install their dependencies from CRAN.}
 \usage{
 install_fgeo(pkgs = fgeo_source())
+
+install_dependencies(...)
 }
 \arguments{
 \item{pkgs}{Character vector: Path to source packages to install.}
+
+\item{...}{Arguments passed to \code{\link[utils:install.packages]{utils::install.packages()}}.}
 }
 \value{
 Invisible \code{NULL}.
 }
 \description{
-Ask users to install fgeo-dependencies from CRAN.
+\itemize{
+\item \code{install_fgeo()} installs all \strong{fgeo} packages from source code stored in
+\strong{fgeo.intall}_. It requests all CRAN dependencies to be already
+installed.
+\item \code{install_dependencies()} installs from CRAN the dependencies of all
+\strong{fgeo} packages.
+}
 }
 \examples{
 \dontrun{
-# Two packages from the top of the installation schedule.
-install_fgeo(fgeo_source()[1:2])
-
-# All packags
 install_fgeo()
+install_dependencies()
 }
 }

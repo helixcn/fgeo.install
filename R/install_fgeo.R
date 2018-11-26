@@ -1,24 +1,30 @@
-#' Ask users to install fgeo-dependencies from CRAN.
+#' Install fgeo packages and ask or install their dependencies from CRAN.
+#'
+#' * `install_fgeo()` installs all __fgeo__ packages from source code stored in
+#'   __fgeo.intall___. It requests all CRAN dependencies to be already
+#'   installed.
+#' * `install_dependencies()` installs from CRAN the dependencies of all
+#' __fgeo__ packages.
 #'
 #' @param pkgs Character vector: Path to source packages to install.
+#' @param ... Arguments passed to [utils::install.packages()].
 #'
 #' @return Invisible `NULL`.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' # Two packages from the top of the installation schedule.
-#' install_fgeo(fgeo_source()[1:2])
-#'
-#' # All packags
 #' install_fgeo()
+#' install_dependencies()
 #' }
 install_fgeo <- function(pkgs = fgeo_source()) {
-  cran_packages <- needed(fgeo.install::cran_packages)
+  cran_deps <- needed(fgeo.install::cran_packages)
 
-  request_install(cran_packages)
+  if (!all_installed(cran_deps)) {
+    return(guide_installation(cran_deps))
+  } else {
+    cran_done()
 
-  if (all_installed(cran_packages)) {
     cat_line(cry_note("Installing fgeo packages from source:"))
     utils::install.packages(pkgs, repos = NULL, type = "source")
 
@@ -28,44 +34,25 @@ install_fgeo <- function(pkgs = fgeo_source()) {
     )
   }
 
-  invisible()
+  invisible(pkgs)
 }
 
-request_install <- function(pkgs) {
-  if (all_installed(pkgs)) {
-    cat_line(cry_done("All CRAN dependencies are installed."))
-    return(invisible(pkgs))
+#' @rdname install_fgeo
+#' @export
+install_dependencies <- function(...) {
+  cran_deps <- needed(fgeo.install::cran_packages)
+
+  if (all_installed(cran_deps)) {
+    return(cran_done())
   }
 
-  guide_installation(pkgs)
-  invisible(pkgs)
+  utils::install.packages(cran_deps, ...)
 }
 
 all_installed <- function(pkgs) {
   identical(pkgs, character(0))
 }
 
-#' Path to source fgeo packages.
-#'
-#' @param path Character vector: Path to a file in inst/extdata/source.
-#'
-#' @return Character vector.
-#' @export
-#'
-#' @examples
-#' path_source()
-#'
-#' path_source(fgeo.install::scheduled_packages)
-#' # Evocative shortcut
-#' fgeo_source()
-path_source <- function(path = NULL) {
-  if (is.null(path)) {
-    return(system.file("extdata", "source", package = "fgeo.install"))
-  }
-
-  system.file("extdata", "source", path, package = "fgeo.install")
+cran_done <- function() {
+  cat_line(cry_done("All CRAN dependencies are installed."))
 }
-
-#' @rdname path_source
-#' @export
-fgeo_source <- function() path_source(fgeo.install::scheduled_packages)
