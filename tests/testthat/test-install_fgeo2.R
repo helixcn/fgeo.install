@@ -4,7 +4,7 @@ context("install_fgeo2")
 # test() but not check().
 
 test_that("with missing dependencies", {
-  skip("Passes test() but not check()")
+  # skip("Passes test() but not check()")
 
   repos <- "https://cran.rstudio.com/"
   utils::install.packages("writexl", repos = repos)
@@ -14,9 +14,12 @@ test_that("with missing dependencies", {
 
   # Avoid error during R CMD check about missing cran mirror.
 
-  expect_output(install_fgeo(), "install.packages.*writexl")
+  expect_output(
+    install_fgeo(),
+    "install the following.*Expected R environment.*Run.*install_dependencies()"
+  )
   expect_output(
     install_dependencies(repos = repos),
-    "writexl.*unpacked"
+    "Expected R environment.*writexl.*unpacked"
   )
 })

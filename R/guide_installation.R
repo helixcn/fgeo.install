@@ -8,21 +8,39 @@
 #' @examples
 #' guide_installation(c("pkg1", "pkg2"))
 guide_installation <- function(pkgs) {
-  cat_line("You need to install the following packages from CRAN:")
+  cat_line("You need to install the following dependencies:")
   cat_bullet(format(pkgs))
   cat_line()
-  cat_line(
-    cry_warn("1) Start a clean session by clicking 'Session > Restart R'")
-  )
-  cat_line(
-    cry_warn("2) Copy-paste and run the code below, then rerun "),
-    cry_code("`fgeo.install::install_fgeo()`:")
-  )
+
+  note_expected_r_environment()
   cat_line()
 
-  pkg_str <- paste0(deparse(pkgs), collapse = "\n")
-  cat_line(cry_code("install.packages(", pkg_str, ")"))
+  cat_line(
+    crayon::bold(
+      cry_note("Run"),
+      cry_code("`fgeo.install::install_dependencies()`")
+    )
+  )
+  cat_line()
 
   invisible(pkgs)
 }
 
+note_expected_r_environment <- function() {
+  cat_line(cry_note(crayon::bold("Expected R environment:")))
+
+  cat_line(cry_note("* R version is recent"))
+
+  cat_line(
+    cry_note("* All packages are updated (run "),
+    cry_code("`update.packages()`"),
+    cry_note(")")
+  )
+
+  cat_line(cry_note("* No other R session is running"))
+
+  cat_line(
+    cry_note("* Current R session is clean (click "),
+    cry_note(crayon::italic("'Session > Restart R")), cry_note(")")
+  )
+}

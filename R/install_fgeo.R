@@ -46,6 +46,7 @@ install_dependencies <- function(...) {
     return(cran_done())
   }
 
+  note_expected_r_environment()
   utils::install.packages(cran_deps, ...)
 }
 
