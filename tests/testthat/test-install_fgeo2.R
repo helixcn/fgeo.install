@@ -4,7 +4,7 @@ context("install_fgeo2")
 # test() but not check().
 
 test_that("with missing dependencies", {
-  # skip("Passes test() but not check()")
+  skip("Passes test() but not check()")
 
   repos <- "https://cran.rstudio.com/"
   utils::install.packages("writexl", repos = repos)
