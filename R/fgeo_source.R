@@ -17,10 +17,21 @@ fgeo_source <- function() {
 }
 
 path_source <- function(path = NULL) {
+  src <- system.file("extdata", "source", package = "fgeo.install")
+
   if (is.null(path)) {
-    return(system.file("extdata", "source", package = "fgeo.install"))
+    return(src)
   }
 
-  system.file("extdata", "source", path, package = "fgeo.install")
+  out <- system.file("extdata", "source", path, package = "fgeo.install")
+
+  exist <- vapply(out, file.exists, logical(1))
+  if (!all(exist)) {
+    valid <- paste0("* ", dir(src), collapse = "\n")
+    stop("`path` must exist.\nValid paths:\n", valid, ").", call. = FALSE
+    )
+  }
+
+  out
 }
 
