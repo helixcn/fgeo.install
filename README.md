@@ -17,29 +17,7 @@ install.packages("devtools")
 devtools::install_github("forestgeo/fgeo.install")
 ```
 
-## Preparation
-
-    Expected R environment:
-    * R version is recent
-    * All packages are updated (run `update.packages()`)
-    * No other R session is running
-    * Current R session is clean (click Session > Restart R)
-
 ## Usage
 
     fgeo.install::install_dependencies()
     fgeo.install::install_fgeo()
-
-After installing **fgeo** you can use use all packages with
-`library(fgeo)`
-
-``` r
-library(fgeo)
-#> -- Attaching packages ------------------------------------------- fgeo 0.0.0.9002 --
-#> v fgeo.abundance  0.0.0.9006     v fgeo.map        0.0.0.9402
-#> v fgeo.demography 0.0.0.9103     v fgeo.tool       0.0.0.9004
-#> v fgeo.habitat    0.0.0.9007     v fgeo.x          0.0.0.9000
-#> 
-```
-
-See [**fgeo**](https://forestgeo.github.io/fgeo/).

@@ -26,23 +26,9 @@ install.packages("devtools")
 devtools::install_github("forestgeo/fgeo.install")
 ```
 
-## Preparation
-
-```{r, echo=FALSE, comment=""}
-fgeo.install:::note_expected_r_environment()
-```
-
 ## Usage
 
 ```
 fgeo.install::install_dependencies()
 fgeo.install::install_fgeo()
 ```
-
-After installing __fgeo__ you can use use all packages with `library(fgeo)`
-
-```{r}
-library(fgeo)
-```
-
-See [__fgeo__](https://forestgeo.github.io/fgeo/).
