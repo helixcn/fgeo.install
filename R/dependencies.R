@@ -7,13 +7,15 @@
 #' @author Adapted from __tidyverse__.
 #'
 #' @return Character vector.
-#' @export
+#' @keywords internal
+#'
 #'
 #' @examples
 #' dependencies("fgeo.install")
 #' dependencies("crayon")
 #' dependencies("crayon", exclude = "utils")
 #' dependencies("fgeo.install", section = "Suggests")
+#' @noRd
 dependencies <- function(pkgs, exclude = NULL, section = "Imports") {
   deps <- sort(unique(Reduce(c, dependencies_ls(pkgs, section))))
 
@@ -24,8 +26,8 @@ dependencies <- function(pkgs, exclude = NULL, section = "Imports") {
   deps
 }
 
-#' @export
 #' @rdname dependencies
+#' @noRd
 dependencies_ls <- function(pkgs, section = "Imports") {
   raws <- lapply(
     pkgs, function(x) utils::packageDescription(x)[[sanitize_section(section)]]

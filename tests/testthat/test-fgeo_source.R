@@ -1,7 +1,7 @@
 context("fgeo_source")
 
 test_that("retuns the expected path", {
-  expect_equal(basename(fgeo_source()), fgeo.install::scheduled_packages)
+  expect_equal(basename(fgeo_source()), scheduled_packages)
 
   expect_equal(basename(path_source()), "source")
   expect_error(path_source("bad"), "must exist")

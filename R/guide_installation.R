@@ -3,10 +3,11 @@
 #' @param pkgs Character vector: The names of the packages to install.
 #'
 #' @return Text output as with `cat()` and invisible `pkgs`.
-#' @export
+#' @keywords internal
 #'
 #' @examples
 #' guide_installation(c("pkg1", "pkg2"))
+#' @noRd
 guide_installation <- function(pkgs) {
   cat_line("You need to install the following dependencies:")
   cat_bullet(format(pkgs))

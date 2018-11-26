@@ -20,10 +20,8 @@
 #' install_dependencies()
 #' }
 install_fgeo <- function(pkgs = fgeo_source()) {
-  cran_deps <- needed(fgeo.install::cran_packages)
-
-  if (!all_installed(cran_deps)) {
-    return(guide_installation(cran_deps))
+  if (!all_installed(needed(cran_packages))) {
+    return(guide_installation(needed(cran_packages)))
   } else {
     cran_done()
 
@@ -42,7 +40,7 @@ install_fgeo <- function(pkgs = fgeo_source()) {
 #' @rdname install_fgeo
 #' @export
 install_dependencies <- function(...) {
-  cran_deps <- needed(fgeo.install::cran_packages)
+  cran_deps <- needed(cran_packages)
 
   if (all_installed(cran_deps)) {
     return(cran_done())
