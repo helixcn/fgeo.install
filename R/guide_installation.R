@@ -41,6 +41,6 @@ note_expected_r_environment <- function() {
 
   cat_line(
     cry_note("* Current R session is clean (click "),
-    cry_note(crayon::italic("'Session > Restart R")), cry_note(")")
+    cry_note(crayon::italic("Session > Restart R")), cry_note(")")
   )
 }

@@ -15,15 +15,18 @@ install_dependencies(...)
 \item{...}{Arguments passed to \code{\link[utils:install.packages]{utils::install.packages()}}.}
 }
 \value{
-Invisible \code{NULL}.
+\itemize{
+\item \code{install_dependencies()} returns invisible \code{NULL}.
+\item \code{install_fgeo()} returns invisible \code{pkgs}.
+}
 }
 \description{
 \itemize{
-\item \code{install_fgeo()} installs all \strong{fgeo} packages from source code stored in
-\strong{fgeo.intall}_. It requests all CRAN dependencies to be already
-installed.
 \item \code{install_dependencies()} installs from CRAN the dependencies of all
 \strong{fgeo} packages.
+\item \code{install_fgeo()} installs all \strong{fgeo} packages from source code stored in
+\strong{fgeo.install}_. It requests all CRAN dependencies to be already
+installed.
 }
 }
 \examples{

@@ -1,15 +1,17 @@
 #' Install fgeo packages and ask or install their dependencies from CRAN.
 #'
-#' * `install_fgeo()` installs all __fgeo__ packages from source code stored in
-#'   __fgeo.intall___. It requests all CRAN dependencies to be already
-#'   installed.
 #' * `install_dependencies()` installs from CRAN the dependencies of all
 #' __fgeo__ packages.
+#' * `install_fgeo()` installs all __fgeo__ packages from source code stored in
+#'   __fgeo.install___. It requests all CRAN dependencies to be already
+#'   installed.
 #'
 #' @param pkgs Character vector: Path to source packages to install.
 #' @param ... Arguments passed to [utils::install.packages()].
 #'
-#' @return Invisible `NULL`.
+#' @return
+#'   * `install_dependencies()` returns invisible `NULL`.
+#'   * `install_fgeo()` returns invisible `pkgs`.
 #' @export
 #'
 #' @examples
@@ -48,6 +50,8 @@ install_dependencies <- function(...) {
 
   note_expected_r_environment()
   utils::install.packages(cran_deps, ...)
+
+  invisible()
 }
 
 all_installed <- function(pkgs) {
