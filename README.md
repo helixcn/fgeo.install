@@ -24,8 +24,8 @@ devtools::install_github("forestgeo/fgeo.install")
 
 ## Usage
 
-    fgeo.install::install()
+    fgeo.install::install_from_github()
     
     # Or
-    fgeo.install::install_dependencies()
+    fgeo.install::install_needed_dependencies()
     fgeo.install::install_fgeo()

@@ -19,7 +19,7 @@ guide_installation <- function(pkgs) {
   cat_line(
     crayon::bold(
       cry_note("Run"),
-      cry_code("`fgeo.install::install_dependencies()`")
+      cry_code("`fgeo.install::install_needed_dependencies()`")
     )
   )
   cat_line()
@@ -46,7 +46,7 @@ note_expected_r_environment <- function() {
   )
 }
 
-note_update_packages <- function() {
+ask_update_packages <- function() {
   cat_line(
     cry_note("To check for updates run "),
     cry_code("`update.packages()` or `remotes::update_packages()`")

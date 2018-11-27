@@ -16,10 +16,10 @@ test_that("with missing dependencies", {
 
   expect_output(
     install_fgeo(),
-    "install the following.*Expected R environment.*Run.*install_dependencies()"
+    "install the following.*Expected R environment.*Run.*install.*dependencies()"
   )
   expect_output(
-    install_dependencies(repos = repos),
+    install_needed_dependencies(repos = repos),
     "Expected R environment.*writexl.*unpacked"
   )
 })
