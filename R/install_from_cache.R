@@ -22,6 +22,8 @@ install_needed_cran_packages <- function() {
   cat_line(cry_note("Installing fgeo dependencies from CRAN:"))
 
   utils::install.packages(pkgs = needed(cran_packages))
+
+  invisible()
 }
 
 install_needed_from_github <- function() {
@@ -29,6 +31,8 @@ install_needed_from_github <- function() {
 
   repos <- paste0("forestgeo/", needed(fgeo_packages))
   remotes::install_github(repos, updgrade = "never", auth_token = .guest_pat)
+
+  invisible()
 }
 
 install_needed_from_cache <- function() {
@@ -37,6 +41,8 @@ install_needed_from_cache <- function() {
   scheduled_bare <- gsub("_.*$", "", basename(fgeo_source()))
   needed <- scheduled_bare %in% needed(fgeo_packages)
   utils::install.packages(fgeo_source()[needed], repos = NULL, type = "source")
+
+  invisible()
 }
 
 #' Install __fgeo__ from GitHub or cache.
@@ -82,6 +88,8 @@ inform_expected_r_environment <- function() {
     cry_note("* Current R session is clean (click "),
     cry_note(crayon::italic("Session > Restart R")), cry_note(")")
   )
+
+  invisible()
 }
 
 all_installed <- function(pkgs) {
@@ -106,14 +114,9 @@ inform_update_packages <- function() {
     cry_note("To check for updates run "),
     cry_code("`update.packages()` or `remotes::update_packages()`")
   )
+
+  invisible()
 }
-
-
-
-
-
-
-
 
 fgeo_source <- function() {
   path_source(scheduled_packages)
