@@ -4,9 +4,16 @@
 \alias{install}
 \title{Install \strong{fgeo} from GitHub.}
 \usage{
-install(upgrade = "never", auth_token = .github_pat, ...)
+install(repo = "forestgeo/fgeo", upgrade = "never",
+  auth_token = "disabled", ...)
 }
 \arguments{
+\item{repo}{Repository address in the format
+\code{username/repo[/subdir][@ref|#pull]}. Alternatively, you can
+specify \code{subdir} and/or \code{ref} using the respective parameters
+(see below); if both is specified, the values in \code{repo} take
+precedence.}
+
 \item{upgrade}{One of "ask", "always" or "never". "ask" prompts the user for
 which out of date packages to upgrade. For non-interactive sessions "ask" is
 equivalent to "always". \code{TRUE} and \code{FALSE} are also accepted and
