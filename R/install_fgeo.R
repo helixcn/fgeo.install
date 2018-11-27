@@ -28,10 +28,7 @@ install_fgeo <- function(pkgs = fgeo_source()) {
     cat_line(cry_note("Installing fgeo packages from source:"))
     utils::install.packages(pkgs, repos = NULL, type = "source")
 
-    cat_line(
-      cry_note("To check for updates run "),
-      cry_code("`update.packages()` or `devtools::update_packages()`")
-    )
+    note_update_packages()
   }
 
   invisible(pkgs)

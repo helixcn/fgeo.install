@@ -45,3 +45,10 @@ note_expected_r_environment <- function() {
     cry_note(crayon::italic("Session > Restart R")), cry_note(")")
   )
 }
+
+note_update_packages <- function() {
+  cat_line(
+    cry_note("To check for updates run "),
+    cry_code("`update.packages()` or `devtools::update_packages()`")
+  )
+}
