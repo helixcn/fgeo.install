@@ -17,7 +17,7 @@ GitHub’s rate-limit if you lack an authenticated GitHub account (but see
 
 ## Installation
 
-Use devtools to install fgeo.install from GitHub:
+Use **devtools** to install **fgeo.install** from GitHub:
 
 ``` r
 install.packages("devtools")
@@ -26,9 +26,10 @@ devtools::install_github("forestgeo/fgeo.install")
 
 ## Usage
 
-Use fgeo.install to install fgeo from cache or from GitHub:
+Use **fgeo.install** to install **fgeo** from cache or GitHub:
 
-    fgeo.install::install_from_cache()
-    
-    # Or
-    fgeo.install::install_from_github()
+``` r
+fgeo.install::install_from_cache()
+# Or
+fgeo.install::install_from_github()
+```
