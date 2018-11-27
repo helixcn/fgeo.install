@@ -49,6 +49,6 @@ note_expected_r_environment <- function() {
 note_update_packages <- function() {
   cat_line(
     cry_note("To check for updates run "),
-    cry_code("`update.packages()` or `devtools::update_packages()`")
+    cry_code("`update.packages()` or `remotes::update_packages()`")
   )
 }

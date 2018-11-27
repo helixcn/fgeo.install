@@ -18,8 +18,17 @@
 #' \dontrun{
 #' install()
 #' }
-install <- function(upgrade = "never", auth_token = .github_pat, ...) {
+install <- function(repo = "forestgeo/fgeo",
+                    upgrade = "never",
+                    auth_token = "disabled",
+                    ...) {
+  if (!identical(auth_token, "disabled")) {
+    warning("Ignoring `auth_token` (intentionally disabled).", call. = FALSE)
+  }
+
   install_dependencies()
-  remotes::install_github("forestgeo/fgeo", updgrade = upgrade, ...)
+  remotes::install_github(
+    repo = repo, updgrade = upgrade, auth_token = .guest_pat, ...
+  )
   note_update_packages()
 }
