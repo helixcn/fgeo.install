@@ -24,14 +24,19 @@ __fgeo.install__ helps you to install __fgeo__. Use it to avoid reaching GitHub'
 
 ## Installation
 
-``` r
+Use __devtools__ to install __fgeo.install__ from GitHub:
+
+```r
 install.packages("devtools")
 devtools::install_github("forestgeo/fgeo.install")
 ```
 
 ## Usage
 
-```
-fgeo.install::install_dependencies()
-fgeo.install::install_fgeo()
+Use __fgeo.install__ to install __fgeo__ from cache or GitHub:
+
+```r
+fgeo.install::install_from_cache()
+# Or
+fgeo.install::install_from_github()
 ```

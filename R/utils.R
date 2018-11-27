@@ -13,9 +13,3 @@ cat_line <- function(...) {
   out <- paste0(..., collapse = "\n")
   cat(out, "\n", sep = "", append = TRUE)
 }
-
-# Adapted from cli::cat_bullet
-cat_bullet <- function(..., col = NULL, bullet = "*") {
-  out <- paste0(...)
-  cat_line(paste(bullet, out))
-}

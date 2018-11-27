@@ -16,7 +16,8 @@ BugReports: https://github.com/forestgeo/fgeo.install/issues
 Depends: 
     R (>= 3.2)
 Imports: 
-    crayon
+    crayon,
+    remotes
 Suggests: 
     testthat,
     covr
