@@ -58,14 +58,11 @@ install_needed_from_cache <- function() {
 #'
 #' @examples
 #' \dontrun{
-#' install_from_github()
-#' install_from_cache()
+#' install_github2()
 #' }
-install_from_cache <- install_from(install_needed_from_cache)
+install_github2 <- install_from(install_needed_from_github)
 
-#' @rdname install_from_cache
-#' @export
-install_from_github <- install_from(install_needed_from_github)
+install_cache <- install_from(install_needed_from_cache)
 
 
 

@@ -1,34 +1,10 @@
 options(repos = c(CRAN = "https://cran.rstudio.com/"))
 
-context("install_from_cache")
+context("install_github2")
 
 test_that("Informs if needed packages are installed", {
   expect_output(
-    install_from_cache(),
-    "Expected.*environment.*CRAN.*installed.*fgeo.*installed.*update.*packages"
-  )
-})
-
-test_that("Installs missing packages from CRAN and GitHub", {
-  skip("Passes test() but not check()")
-
-  remove.packages(c("writexl", "fgeo.x"))
-
-  todo_and_done <- paste0(
-    "Expected.*environment.*",
-    "Installing.*CRAN.*CRAN.*installed.*",
-    "Installing.*cache.*fgeo.*installed.*"
-  )
-  expect_output(install_from_cache(), todo_and_done)
-})
-
-
-
-context("install_from_github")
-
-test_that("Informs if needed packages are installed", {
-  expect_output(
-    install_from_github(),
+    install_github2(),
     "Expected.*environment.*CRAN.*installed.*fgeo.*installed.*update.*packages"
   )
 })
@@ -43,9 +19,32 @@ test_that("Installs missing packages from CRAN and GitHub", {
     "Installing.*CRAN.*CRAN.*installed.*",
     "Installing.*GitHub.*fgeo.*installed.*"
   )
-  expect_output(install_from_github(), todo_and_done)
+  expect_output(install_github2(), todo_and_done)
 })
 
+
+
+context("install_cache")
+
+test_that("Informs if needed packages are installed", {
+  expect_output(
+    install_cache(),
+    "Expected.*environment.*CRAN.*installed.*fgeo.*installed.*update.*packages"
+  )
+})
+
+test_that("Installs missing packages from CRAN and GitHub", {
+  skip("Passes test() but not check()")
+
+  remove.packages(c("writexl", "fgeo.x"))
+
+  todo_and_done <- paste0(
+    "Expected.*environment.*",
+    "Installing.*CRAN.*CRAN.*installed.*",
+    "Installing.*cache.*fgeo.*installed.*"
+  )
+  expect_output(install_cache(), todo_and_done)
+})
 
 
 # Helpers -----------------------------------------------------------------
