@@ -35,24 +35,12 @@ install_needed_from_github <- function() {
   invisible()
 }
 
-install_needed_from_cache <- function() {
-  cat_line(cry_note("Installing needed fgeo packages from cache:"))
-
-  scheduled_bare <- gsub("_.*$", "", basename(fgeo_source()))
-  needed <- scheduled_bare %in% needed(fgeo_packages)
-  utils::install.packages(fgeo_source()[needed], repos = NULL, type = "source")
-
-  invisible()
-}
-
-#' Install __fgeo__ from GitHub or cache.
+#' Install __fgeo__ from GitHub.
 #'
-#' These functions install fgeo dependencies from CRAN and fgeo packages from
-#' either GitHub or from a cache stored inside __fgeo.install__. They install
-#' only the packages that are not already installed.
+#' This function installs __fgeo__ dependencies from CRAN and fgeo packages from
+#' GitHub. It installs only the packages that are not already installed.
 #'
-#' @seealso [remotes::install_github], [remotes::update_packages()],
-#' [utils::update.packages()].
+#' @seealso [remotes::install_github], [follow_up].
 #'
 #' @export
 #'
@@ -62,7 +50,16 @@ install_needed_from_cache <- function() {
 #' }
 install_github2 <- install_from(install_needed_from_github)
 
-install_cache <- install_from(install_needed_from_cache)
+
+install_needed_from_cache <- function() {
+  cat_line(cry_note("Installing needed fgeo packages from cache:"))
+
+  scheduled_bare <- gsub("_.*$", "", basename(fgeo_source()))
+  needed <- scheduled_bare %in% needed(fgeo_packages)
+  utils::install.packages(fgeo_source()[needed], repos = NULL, type = "source")
+
+  invisible()
+}
 
 
 

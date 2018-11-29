@@ -2,14 +2,13 @@
 % Please edit documentation in R/install_github2.R
 \name{install_github2}
 \alias{install_github2}
-\title{Install \strong{fgeo} from GitHub or cache.}
+\title{Install \strong{fgeo} from GitHub.}
 \usage{
 install_github2()
 }
 \description{
-These functions install fgeo dependencies from CRAN and fgeo packages from
-either GitHub or from a cache stored inside \strong{fgeo.install}. They install
-only the packages that are not already installed.
+This function installs \strong{fgeo} dependencies from CRAN and fgeo packages from
+either GitHub. It installs only the packages that are not already installed.
 }
 \examples{
 \dontrun{
@@ -17,6 +16,5 @@ install_github2()
 }
 }
 \seealso{
-\link[remotes:install_github]{remotes::install_github}, \code{\link[remotes:update_packages]{remotes::update_packages()}},
-\code{\link[utils:update.packages]{utils::update.packages()}}.
+\link[remotes:install_github]{remotes::install_github}, \link{follow_up}.
 }
