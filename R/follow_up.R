@@ -19,6 +19,9 @@
 #' # Best if you already had an old version of fgeo
 #' remove.packages("fgeo")
 #' fgeo.install::install_fgeo()
+#'
+#' # Remove all fgeo packages (`fgeo_packages` comes with fgeo.install)
+#' remove.packages(fgeo.install::fgeo_packages)
 #' ```
 #' @name follow_up
 NULL

@@ -10,7 +10,7 @@ test_that("Informs if needed packages are installed", {
 })
 
 test_that("Installs missing packages from CRAN and GitHub", {
-   skip("Passes test() but not check()")
+   # skip("Passes test() but not check()")
 
   remove.packages(c("writexl", "fgeo.x"))
 
@@ -23,19 +23,19 @@ test_that("Installs missing packages from CRAN and GitHub", {
 })
 
 test_that("Accepts argument `ref`", {
-   skip("Passes test() but not check()")
+   # skip("Passes test() but not check()")
   remove.packages("fgeo.x")
   expect_error(install_fgeo("dev"), NA)
 })
 
 test_that("Accepts argument `ref`", {
-   skip("Passes test() but not check()")
+   # skip("Passes test() but not check()")
   remove.packages("fgeo.x")
   expect_warning(install_fgeo("bad"), "bad failed.*Trying.*master")
 })
 
 test_that("Accepts argument `ref`", {
-   skip("Passes test() but not check()")
+   # skip("Passes test() but not check()")
   remove.packages(c("fgeo.x", "fgeo"))
   expect_warning(install_fgeo("bad"), "bad failed.*Trying.*master")
 })

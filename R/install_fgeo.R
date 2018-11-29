@@ -46,32 +46,31 @@ install_needed_fgeo_packages <- function(ref = "master") {
   invisible()
 }
 
-try_install <- function(repos, ref) {
+try_install <- function(repo, ref) {
   if (identical(ref, "master")) {
-    return(call_install(repos, ref))
+    return(install_ref(repo, ref))
   }
 
   tryCatch(
-    call_install(repos, ref),
+    install_ref(repo, ref),
     error = function(e) {
       warning(
-        repos, "@", ref, " failed to install. ", "Trying ", repos, "@master",
+        repo, "@", ref, " failed to install. ", "Trying ", repo, "@master",
         call. = FALSE
       )
 
-      call_install(repos, ref = "master")
+      install_ref(repo, ref = "master")
     }
   )
 }
 
-call_install <- function(repos, ref) {
-  args <- list(
-    repo = repos,
+install_ref <- function(repo, ref) {
+  remotes::install_github(
+    repo = repo,
     ref = ref,
     updgrade = "never",
     auth_token = .guest_pat
   )
-  do.call(remotes::install_github, args)
 }
 
 # Helpers -----------------------------------------------------------------
