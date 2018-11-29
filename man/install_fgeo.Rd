@@ -4,7 +4,11 @@
 \alias{install_fgeo}
 \title{Install \strong{fgeo} from GitHub.}
 \usage{
-install_fgeo()
+install_fgeo(ref = "master")
+}
+\arguments{
+\item{ref}{Desired git reference. Could be a commit, tag, a call to
+github_pull(), or most commonly a branch name such as "master" or "dev".}
 }
 \description{
 This function installs \strong{fgeo} dependencies from CRAN and fgeo packages from
@@ -13,6 +17,9 @@ GitHub. It installs only the packages that are not already installed.
 \examples{
 \dontrun{
 install_fgeo()
+
+# Install the development (maybe failing) branch of each package.
+install_fgeo("dev")
 }
 }
 \seealso{

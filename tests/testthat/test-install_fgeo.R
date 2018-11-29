@@ -22,6 +22,27 @@ test_that("Installs missing packages from CRAN and GitHub", {
   expect_output(install_fgeo(), todo_and_done)
 })
 
+test_that("Accepts argument `ref`", {
+   skip("Passes test() but not check()")
+  remove.packages("fgeo.x")
+  expect_error(install_fgeo("dev"), NA)
+})
+
+test_that("Accepts argument `ref`", {
+   skip("Passes test() but not check()")
+  remove.packages("fgeo.x")
+  expect_warning(install_fgeo("bad"), "bad failed.*Trying.*master")
+})
+
+test_that("Accepts argument `ref`", {
+   skip("Passes test() but not check()")
+  remove.packages(c("fgeo.x", "fgeo"))
+  expect_warning(install_fgeo("bad"), "bad failed.*Trying.*master")
+})
+
+
+
+
 
 
 # Helpers -----------------------------------------------------------------

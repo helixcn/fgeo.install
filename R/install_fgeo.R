@@ -3,6 +3,9 @@
 #' This function installs __fgeo__ dependencies from CRAN and fgeo packages from
 #' GitHub. It installs only the packages that are not already installed.
 #'
+#' @param ref Desired git reference. Could be a commit, tag, a call to
+#'   github_pull(), or most commonly a branch name such as "master" or "dev".
+#'
 #' @seealso [remotes::install_github], [follow_up].
 #'
 #' @export
@@ -10,8 +13,11 @@
 #' @examples
 #' \dontrun{
 #' install_fgeo()
+#'
+#' # Install the development (maybe failing) branch of each package.
+#' install_fgeo("dev")
 #' }
-install_fgeo <- function() {
+install_fgeo <- function(ref = "master") {
   inform_expected_r_environment()
 
   if (!all_installed(needed(fgeo.install::cran_packages))) {
@@ -20,7 +26,7 @@ install_fgeo <- function() {
   done(fgeo.install::cran_packages, "All CRAN dependencies are installed.")
 
   if (!all_installed(needed(fgeo.install::fgeo_packages))) {
-    install_needed_fgeo_packages()
+    install_needed_fgeo_packages(ref = ref)
   }
   done(fgeo.install::fgeo_packages, "All fgeo packages are installed.")
 
@@ -33,12 +39,39 @@ install_needed_cran_packages <- function() {
   invisible()
 }
 
-install_needed_fgeo_packages <- function() {
+install_needed_fgeo_packages <- function(ref = "master") {
   cat_line(cry_note("Installing needed fgeo packages from GitHub:"))
   repos <- paste0("forestgeo/", needed(fgeo.install::fgeo_packages))
-  remotes::install_github(repos, updgrade = "never", auth_token = .guest_pat)
-
+  lapply(repos, try_install, ref)
   invisible()
+}
+
+try_install <- function(repos, ref) {
+  if (identical(ref, "master")) {
+    return(call_install(repos, ref))
+  }
+
+  tryCatch(
+    call_install(repos, ref),
+    error = function(e) {
+      warning(
+        repos, "@", ref, " failed to install. ", "Trying ", repos, "@master",
+        call. = FALSE
+      )
+
+      call_install(repos, ref = "master")
+    }
+  )
+}
+
+call_install <- function(repos, ref) {
+  args <- list(
+    repo = repos,
+    ref = ref,
+    updgrade = "never",
+    auth_token = .guest_pat
+  )
+  do.call(remotes::install_github, args)
 }
 
 # Helpers -----------------------------------------------------------------
