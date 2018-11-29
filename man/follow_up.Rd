@@ -20,6 +20,6 @@ remotes::update_packages()
 
 # Best if you already had an old version of fgeo
 remove.packages("fgeo")
-fgeo.install::install_github2()
+fgeo.install::install_fgeo()
 }
 }
