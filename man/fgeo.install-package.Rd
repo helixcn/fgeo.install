@@ -21,6 +21,9 @@ Useful links:
 
 Other contributors:
 \itemize{
+  \item Bier Ekaphan Kraichak \email{ekaphan.k@ku.th} [reviewer]
+  \item Erika Gonzalez-Akre \email{GonzalezEB@si.edu@si.edu} [reviewer]
+  \item Valentine Herrmann \email{HerrmannV@si.edu} [reviewer]
   \item CTFS-ForestGEO \email{ForestGEO@si.edu} [copyright holder]
 }
 
