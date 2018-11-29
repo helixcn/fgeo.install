@@ -29,7 +29,8 @@ Depends:
     R (>= 3.2)
 Imports: 
     crayon,
-    remotes
+    remotes,
+    withr
 Suggests: 
     testthat,
     covr
