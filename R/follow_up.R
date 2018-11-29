@@ -8,6 +8,8 @@
 #' maurolepore\@gmail.com.
 #' @description
 #' ```R
+#' # Warning: Updating packages may be slow if many packages are behind
+#'
 #' # Check for uptates
 #' update.packages()
 #'

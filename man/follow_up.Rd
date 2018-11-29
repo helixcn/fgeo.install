@@ -10,7 +10,9 @@ installation or please report it
 \href{https://github.com/forestgeo/fgeo.install/issues/new}{here} or email me at
 maurolepore@gmail.com.
 
-\preformatted{# Check for uptates
+\preformatted{# Warning: Updating packages may be slow if many packages are behind
+
+# Check for uptates
 update.packages()
 
 # Similar but more comprehensive
