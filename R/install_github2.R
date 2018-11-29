@@ -14,7 +14,7 @@ install_from <- function(.install_from_location) {
     }
     done(fgeo_packages, "All fgeo packages are installed.")
 
-    inform_update_packages()
+    follow_up()
   }
 }
 
@@ -106,11 +106,8 @@ done <- function(x, msg) {
   invisible()
 }
 
-inform_update_packages <- function() {
-  cat_line(
-    cry_note("To check for updates run "),
-    cry_code("`update.packages()` or `remotes::update_packages()`")
-  )
+follow_up <- function() {
+  cat_line(cry_note("Next you may run "), cry_code("`?follow_up`"))
 
   invisible()
 }
@@ -121,13 +118,11 @@ fgeo_source <- function() {
 
 path_source <- function(path = NULL) {
   src <- system.file("extdata", "source", package = "fgeo.install")
-
   if (is.null(path)) {
     return(src)
   }
 
   out <- system.file("extdata", "source", path, package = "fgeo.install")
-
   exist <- vapply(out, file.exists, logical(1))
   if (!all(exist)) {
     valid <- paste0("* ", dir(src), collapse = "\n")
