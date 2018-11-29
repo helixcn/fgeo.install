@@ -42,7 +42,11 @@ install_needed_cran_packages <- function() {
 install_needed_fgeo_packages <- function(ref = "master") {
   cat_line(cry_note("Installing needed fgeo packages from GitHub:"))
   repos <- paste0("forestgeo/", needed(fgeo.install::fgeo_packages))
-  lapply(repos, try_install, ref)
+  withr::with_envvar(
+    c(GITHUB_PAT = .guest_pat),
+    lapply(repos, try_install, ref)
+  )
+
   invisible()
 }
 
