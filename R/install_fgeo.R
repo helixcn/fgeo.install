@@ -29,15 +29,12 @@ install_fgeo <- function() {
 
 install_needed_cran_packages <- function() {
   cat_line(cry_note("Installing fgeo dependencies from CRAN:"))
-
   utils::install.packages(pkgs = needed(fgeo.install::cran_packages))
-
   invisible()
 }
 
 install_needed_fgeo_packages <- function() {
   cat_line(cry_note("Installing needed fgeo packages from GitHub:"))
-
   repos <- paste0("forestgeo/", needed(fgeo.install::fgeo_packages))
   remotes::install_github(repos, updgrade = "never", auth_token = .guest_pat)
 
@@ -48,17 +45,13 @@ install_needed_fgeo_packages <- function() {
 
 inform_expected_r_environment <- function() {
   cat_line(cry_note(crayon::bold("Expected R environment:")))
-
   cat_line(cry_note("* R version is recent"))
-
   cat_line(
     cry_note("* All packages are updated (run "),
     cry_code("`update.packages()`"),
     cry_note(")")
   )
-
   cat_line(cry_note("* No other R session is running"))
-
   cat_line(
     cry_note("* Current R session is clean (click "),
     cry_note(crayon::italic("Session > Restart R")), cry_note(")")
