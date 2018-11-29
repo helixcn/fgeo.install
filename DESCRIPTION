@@ -8,15 +8,15 @@ Authors@R:
              email = "leporem@si.edu"),
       person(given = "Bier",
              family = "Ekaphan Kraichak",
-             role = c("rev"),
+             role = "rev",
              email = "ekaphan.k@ku.th"),
       person(given = "Erika",
              family = "Gonzalez-Akre",
-             role = c("rev"),
+             role = "rev",
              email = "GonzalezEB@si.edu@si.edu"),
       person(given = "Valentine",
              family = "Herrmann",
-             role = c("rev"),
+             role = "rev",
              email = "HerrmannV@si.edu"),
       person(given = "CTFS-ForestGEO",
              role = "cph",
@@ -32,8 +32,8 @@ Imports:
     remotes,
     withr
 Suggests: 
-    testthat,
-    covr
+    covr,
+    testthat
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
