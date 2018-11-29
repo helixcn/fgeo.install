@@ -3,7 +3,7 @@
 #' @description
 #' After installing __fgeo__ please visit its
 #' [website](https://forestgeo.github.io/fgeo/). If you had any issue during
-#' installation or please report it
+#' installation please report it
 #' [here](https://github.com/forestgeo/fgeo.install/issues/new) or email me at
 #' maurolepore\@gmail.com.
 #' @description

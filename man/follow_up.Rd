@@ -6,7 +6,7 @@
 \description{
 After installing \strong{fgeo} please visit its
 \href{https://forestgeo.github.io/fgeo/}{website}. If you had any issue during
-installation or please report it
+installation please report it
 \href{https://github.com/forestgeo/fgeo.install/issues/new}{here} or email me at
 maurolepore@gmail.com.
 
