@@ -46,9 +46,9 @@ install_needed_from_github <- function() {
 #'
 #' @examples
 #' \dontrun{
-#' install_github2()
+#' install_fgeo()
 #' }
-install_github2 <- install_from(install_needed_from_github)
+install_fgeo <- install_from(install_needed_from_github)
 
 
 install_needed_from_cache <- function() {

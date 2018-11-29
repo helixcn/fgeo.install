@@ -1,10 +1,10 @@
 options(repos = c(CRAN = "https://cran.rstudio.com/"))
 
-context("install_github2")
+context("install_fgeo")
 
 test_that("Informs if needed packages are installed", {
   expect_output(
-    install_github2(),
+    install_fgeo(),
     "Expected.*environment.*CRAN.*installed.*fgeo.*installed.*follow_up"
   )
 })
@@ -19,7 +19,7 @@ test_that("Installs missing packages from CRAN and GitHub", {
     "Installing.*CRAN.*CRAN.*installed.*",
     "Installing.*GitHub.*fgeo.*installed.*"
   )
-  expect_output(install_github2(), todo_and_done)
+  expect_output(install_fgeo(), todo_and_done)
 })
 
 

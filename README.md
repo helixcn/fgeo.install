@@ -25,5 +25,5 @@ install.packages("devtools")
 devtools::install_github("forestgeo/fgeo.install")
 
 # Install dependencies from CRAN and fgeo packages from GitHub
-fgeo.install::install_github2()
+fgeo.install::install_fgeo()
 ```
