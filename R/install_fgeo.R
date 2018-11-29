@@ -1,40 +1,3 @@
-install_from <- function(.install_from_location) {
-  force(.install_from_location)
-
-  function() {
-    inform_expected_r_environment()
-
-    if (!all_installed(needed(fgeo.install::cran_packages))) {
-      install_needed_cran_packages()
-    }
-    done(fgeo.install::cran_packages, "All CRAN dependencies are installed.")
-
-    if (!all_installed(needed(fgeo.install::fgeo_packages))) {
-      .install_from_location()
-    }
-    done(fgeo.install::fgeo_packages, "All fgeo packages are installed.")
-
-    follow_up()
-  }
-}
-
-install_needed_cran_packages <- function() {
-  cat_line(cry_note("Installing fgeo dependencies from CRAN:"))
-
-  utils::install.packages(pkgs = needed(fgeo.install::cran_packages))
-
-  invisible()
-}
-
-install_needed_from_github <- function() {
-  cat_line(cry_note("Installing needed fgeo packages from GitHub:"))
-
-  repos <- paste0("forestgeo/", needed(fgeo.install::fgeo_packages))
-  remotes::install_github(repos, updgrade = "never", auth_token = .guest_pat)
-
-  invisible()
-}
-
 #' Install __fgeo__ from GitHub.
 #'
 #' This function installs __fgeo__ dependencies from CRAN and fgeo packages from
@@ -48,9 +11,38 @@ install_needed_from_github <- function() {
 #' \dontrun{
 #' install_fgeo()
 #' }
-install_fgeo <- install_from(install_needed_from_github)
+install_fgeo <- function() {
+  inform_expected_r_environment()
 
+  if (!all_installed(needed(fgeo.install::cran_packages))) {
+    install_needed_cran_packages()
+  }
+  done(fgeo.install::cran_packages, "All CRAN dependencies are installed.")
 
+  if (!all_installed(needed(fgeo.install::fgeo_packages))) {
+    install_needed_fgeo_packages()
+  }
+  done(fgeo.install::fgeo_packages, "All fgeo packages are installed.")
+
+  follow_up()
+}
+
+install_needed_cran_packages <- function() {
+  cat_line(cry_note("Installing fgeo dependencies from CRAN:"))
+
+  utils::install.packages(pkgs = needed(fgeo.install::cran_packages))
+
+  invisible()
+}
+
+install_needed_fgeo_packages <- function() {
+  cat_line(cry_note("Installing needed fgeo packages from GitHub:"))
+
+  repos <- paste0("forestgeo/", needed(fgeo.install::fgeo_packages))
+  remotes::install_github(repos, updgrade = "never", auth_token = .guest_pat)
+
+  invisible()
+}
 
 # Helpers -----------------------------------------------------------------
 
@@ -94,6 +86,5 @@ done <- function(x, msg) {
 
 follow_up <- function() {
   cat_line(cry_note("Next you may run "), cry_code("`?follow_up`"))
-
   invisible()
 }
