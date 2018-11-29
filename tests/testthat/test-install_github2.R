@@ -5,7 +5,7 @@ context("install_github2")
 test_that("Informs if needed packages are installed", {
   expect_output(
     install_github2(),
-    "Expected.*environment.*CRAN.*installed.*fgeo.*installed.*update.*packages"
+    "Expected.*environment.*CRAN.*installed.*fgeo.*installed.*follow_up"
   )
 })
 
@@ -29,7 +29,7 @@ context("install_cache")
 test_that("Informs if needed packages are installed", {
   expect_output(
     install_cache(),
-    "Expected.*environment.*CRAN.*installed.*fgeo.*installed.*update.*packages"
+    "Expected.*environment.*CRAN.*installed.*fgeo.*installed.*follow_up"
   )
 })
 
