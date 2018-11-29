@@ -1,3 +1,4 @@
+^private$
 ^\.github$
 ^codecov\.yml$
 ^LICENSE\.md$

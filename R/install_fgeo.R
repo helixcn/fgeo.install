@@ -4,15 +4,15 @@ install_from <- function(.install_from_location) {
   function() {
     inform_expected_r_environment()
 
-    if (!all_installed(needed(cran_packages))) {
+    if (!all_installed(needed(fgeo.install::cran_packages))) {
       install_needed_cran_packages()
     }
-    done(cran_packages, "All CRAN dependencies are installed.")
+    done(fgeo.install::cran_packages, "All CRAN dependencies are installed.")
 
-    if (!all_installed(needed(fgeo_packages))) {
+    if (!all_installed(needed(fgeo.install::fgeo_packages))) {
       .install_from_location()
     }
-    done(fgeo_packages, "All fgeo packages are installed.")
+    done(fgeo.install::fgeo_packages, "All fgeo packages are installed.")
 
     follow_up()
   }
@@ -21,7 +21,7 @@ install_from <- function(.install_from_location) {
 install_needed_cran_packages <- function() {
   cat_line(cry_note("Installing fgeo dependencies from CRAN:"))
 
-  utils::install.packages(pkgs = needed(cran_packages))
+  utils::install.packages(pkgs = needed(fgeo.install::cran_packages))
 
   invisible()
 }
@@ -29,7 +29,7 @@ install_needed_cran_packages <- function() {
 install_needed_from_github <- function() {
   cat_line(cry_note("Installing needed fgeo packages from GitHub:"))
 
-  repos <- paste0("forestgeo/", needed(fgeo_packages))
+  repos <- paste0("forestgeo/", needed(fgeo.install::fgeo_packages))
   remotes::install_github(repos, updgrade = "never", auth_token = .guest_pat)
 
   invisible()
