@@ -4,10 +4,6 @@
 # <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> fgeo.install
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Travis build
-status](https://travis-ci.org/forestgeo/fgeo.install.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.install)
-[![Coverage
-status](https://coveralls.io/repos/github/forestgeo/fgeo.install/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.install?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fgeo.install)](https://cran.r-project.org/package=fgeo.install)
 
