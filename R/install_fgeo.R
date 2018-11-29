@@ -51,17 +51,6 @@ install_needed_from_github <- function() {
 install_fgeo <- install_from(install_needed_from_github)
 
 
-install_needed_from_cache <- function() {
-  cat_line(cry_note("Installing needed fgeo packages from cache:"))
-
-  scheduled_bare <- gsub("_.*$", "", basename(fgeo_source()))
-  needed <- scheduled_bare %in% needed(fgeo_packages)
-  utils::install.packages(fgeo_source()[needed], repos = NULL, type = "source")
-
-  invisible()
-}
-
-
 
 # Helpers -----------------------------------------------------------------
 
