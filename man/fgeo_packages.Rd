@@ -5,7 +5,7 @@
 \alias{fgeo_packages}
 \alias{cran_packages}
 \title{Installed packages.}
-\format{An object of class \code{character} of length 9.}
+\format{An object of class \code{character} of length 5.}
 \usage{
 fgeo_packages
 
