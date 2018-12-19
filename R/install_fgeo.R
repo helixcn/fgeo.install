@@ -114,6 +114,6 @@ done <- function(x, msg) {
 }
 
 follow_up <- function() {
-  cat_line(cry_note("Next you may run "), cry_code("`?follow_up`"))
+  cat_line(cry_note("Next you may run "), cry_code("`?fgeo.install::follow_up`"))
   invisible()
 }
