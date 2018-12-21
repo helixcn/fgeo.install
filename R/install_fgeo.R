@@ -21,7 +21,7 @@ install_fgeo <- function(ref = "master") {
   inform_expected_r_environment()
 
   if (!all_installed(needed(fgeo.install::cran_packages))) {
-    install_needed_cran_packages()
+    try_install_cran_binary()
   }
   done(fgeo.install::cran_packages, "All CRAN dependencies are installed.")
 
@@ -33,9 +33,22 @@ install_fgeo <- function(ref = "master") {
   follow_up()
 }
 
-install_needed_cran_packages <- function() {
+try_install_cran_binary <- function() {
   cat_line(cry_note("Installing fgeo dependencies from CRAN:"))
-  utils::install.packages(pkgs = needed(fgeo.install::cran_packages))
+
+  output <- try(capture.output(
+    install_needed_cran_packages(type = "binary")
+  ))
+  if (any(grepl("type 'binary' is not supported on this platform", output))) {
+    install_needed_cran_packages()
+  }
+}
+
+install_needed_cran_packages <- function(type = getOption("pkgType")) {
+  utils::install.packages(
+    pkgs = needed(fgeo.install::cran_packages),
+    type = type
+  )
   invisible()
 }
 
@@ -73,7 +86,8 @@ install_ref <- function(repo, ref) {
     repo = repo,
     ref = ref,
     updgrade = "never",
-    auth_token = .guest_pat
+    auth_token = .guest_pat,
+    type = "binary"
   )
 }
 

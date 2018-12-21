@@ -25,7 +25,11 @@ test_that("Installs missing packages from CRAN and GitHub", {
 test_that("Accepts argument `ref`", {
    skip("Passes test() but not check()")
   remove.packages("fgeo.x")
-  expect_error(install_fgeo("dev"), NA)
+  expect_error(
+    # May warn if "dev" doesn't exist
+    suppressWarnings(install_fgeo("dev")),
+    NA
+  )
 })
 
 test_that("Accepts argument `ref`", {
