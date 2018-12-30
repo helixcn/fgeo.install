@@ -36,7 +36,7 @@ install_fgeo <- function(ref = "master") {
 try_install_cran_binary <- function() {
   cat_line(cry_note("Installing fgeo dependencies from CRAN:"))
 
-  output <- try(capture.output(
+  output <- try(utils::capture.output(
     install_needed_cran_packages(type = "binary")
   ))
   if (any(grepl("type 'binary' is not supported on this platform", output))) {
